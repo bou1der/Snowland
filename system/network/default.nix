@@ -3,7 +3,7 @@
 
 {
 
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   networking.networkmanager = {
     enable = true;
     dns = "systemd-resolved";
