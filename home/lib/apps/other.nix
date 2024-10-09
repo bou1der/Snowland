@@ -9,6 +9,7 @@
     blueman
     wtwitch
     vesktop
+    obs-studio
     teamspeak_client
     telegram-desktop
     vscode
