@@ -3,7 +3,6 @@
 
 let
     walls = pkgs.lib.importJSON "/home/boulder/.cache/wal/colors.json";
-    paper = "";
 in
 {
   imports = [
@@ -50,6 +49,7 @@ in
         "$mod, Space, togglefloating"
 
         "$mod, Escape, exec, ~/.config/home-manager/scripts/show-rofi.sh"
+        "$mod SHIFT, p, exec, rofi -config ~/.config/rofi/ssh.rasi -parse-known-host -show-icons -show ssh -p '🐢' -yoffset 800 "
         "$mod, p, exec, zsh -c 'proxychains4 $(rofi -config ~/.config/rofi/proxy.rasi -dmenu -p '🐢' -yoffset 800)' "
         "$mod, f, fullscreen"
         "$mod SHIFT, A, exec, hyprshot -m region --clipboard-only -z"

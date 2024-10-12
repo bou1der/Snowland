@@ -18,7 +18,7 @@
 				"cssls",
 				"jsonls",
 				"tailwindcss",
-				"pyright",
+        "pyright",
         "clangd"
 			},
 		})
@@ -29,7 +29,7 @@
 				"stylua",
 				"biome",
 				"black",
-				"pyright",
+        "pyright",
 				"biome",
         "clangd"
 			},

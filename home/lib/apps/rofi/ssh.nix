@@ -1,25 +1,18 @@
 
 {pkgs, ...}:
 
+
 let
 
   walls = pkgs.lib.importJSON "/home/boulder/.cache/wal/colors.json";
 
 in
 {
-  imports = [
-    ./proxy.nix
-    ./ssh.nix
-  ];
-
-  home.packages = with pkgs ; [
-    rofi-wayland
-  ];
-
-  home.file.".config/rofi/config.rasi".text = ''
+  home.file.".config/rofi/ssh.rasi".text = ''
     configuration {
       show-icons:true;
-      display-drun:"🐢";
+      display-ssh:"󰒋 ";
+      modes:"ssh";
       font:"JetBrainsMono Nerd Font 14";
       drun-display-format:"{name}";
     }
@@ -100,6 +93,7 @@ in
     }
     element-icon {
         background-color:transparent;
+        content: " 󰒋 ";
         size:32px;
     }
 
@@ -150,6 +144,5 @@ in
         }
     }*/
   '';
-
 
 }

@@ -7,16 +7,7 @@ let
 
 in
 {
-  imports = [
-    ./proxy.nix
-    ./ssh.nix
-  ];
-
-  home.packages = with pkgs ; [
-    rofi-wayland
-  ];
-
-  home.file.".config/rofi/config.rasi".text = ''
+  home.file.".config/rofi/proxy.rasi".text = ''
     configuration {
       show-icons:true;
       display-drun:"🐢";
@@ -26,8 +17,8 @@ in
 
     window {
      width:740px; 
-     height:550px;
-     padding:30px 30px 40px 32px;
+     height:210px;
+     padding:15px;
 
      border:1px;
      border-color:${walls.special.foreground};
@@ -46,7 +37,7 @@ in
         border-radius:               9px;
         spacing:                     0px;
         padding:                     64px 72px;
-        background-image:            url("~/.config/backimg.png",width);
+        background-image:            url("~/Images/onion.png",width);
     }
 
     dummy {
@@ -83,7 +74,7 @@ in
 
     element normal.normal,
     element alternate.normal {
-        
+
         background-color:transparent;
     }
 
@@ -113,7 +104,7 @@ in
     listview {
         border:                      none;
         cursor:                      "default";
-        columns:                     2;
+        columns:                     0;
         cycle:                       true;
         dynamic:                     true;
         scrollbar:                   false;
@@ -121,13 +112,13 @@ in
         reverse:                     false;
         fixed-height:                true;
         fixed-columns:               true;
-        
+
         background-color:            transparent;
         text-color:                  ${walls.special.cursor};
 
-        spacing:                     4px;
+        spacing:                     0px;
         margin:                      0px;
-        padding:                     30px 0px 0px 0px;
+        padding:                     0px;
     }
 
     /* Scrollbar ---------------------------------------------------- */
@@ -150,6 +141,4 @@ in
         }
     }*/
   '';
-
-
 }

@@ -74,7 +74,20 @@ in
 
         modules-left = [];
         modules-center = [];
-        modules-right = [];
+        modules-right = [ "battery" ];
+
+
+        battery = {
+          bat = "BAT1";
+          interval = 60;
+          states = {
+              warning = 30;
+              critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-icons = [" " " " " " " " " "];
+          max-length = 25;
+        };
 
       };
 
