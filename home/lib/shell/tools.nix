@@ -3,6 +3,7 @@
 
 {
   home.packages = with pkgs ; [
+    speedtest-cli
     inetutils
     sysbench
     hyprshot

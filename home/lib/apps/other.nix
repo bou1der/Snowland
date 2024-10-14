@@ -10,7 +10,8 @@
     wtwitch
     vesktop
     obs-studio
-    wireguard-ui
+    ani-cli
+    prismlauncher
     teamspeak_client
     telegram-desktop
     vscode

@@ -5,6 +5,7 @@
     (python312.withPackages (env : with env;[
       pip
       pipx
+      pysnooper
       virtualenv
     ]))
     vscode-extensions.biomejs.biome
