@@ -10,6 +10,7 @@
 	    intel-media-sdk
     ];
   };
+  programs.turbovnc.ensureHeadlessSoftwareOpenGL = true;
 
 
 }

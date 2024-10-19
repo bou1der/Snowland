@@ -11,6 +11,7 @@
     vscode-extensions.biomejs.biome
     luajitPackages.luarocks
     nodePackages.prettier
+    wireguard-tools
     clang-tools
     typescript
     gnumake42
@@ -20,7 +21,6 @@
     redis
     cmake
 	  unzip
-    acpi
 	  zip
     bun
   ];

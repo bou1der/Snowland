@@ -7,6 +7,7 @@
     inetutils
     sysbench
     hyprshot
+    evtest
     ventoy
     pywal
     btop

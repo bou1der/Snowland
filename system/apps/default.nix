@@ -20,7 +20,6 @@
 	    docker-compose
       bridge-utils
       libnotify
-      # glib
       xwaylandvideobridge
     ];
   };
