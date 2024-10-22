@@ -5,14 +5,11 @@
     (python312.withPackages (env : with env;[
       pip
       pipx
-      pysnooper
       virtualenv
     ]))
     vscode-extensions.biomejs.biome
     luajitPackages.luarocks
-    nodePackages.prettier
-    wireguard-tools
-    clang-tools
+    # nodePackages.prettier
     typescript
     gnumake42
 	  nodejs_22
@@ -34,6 +31,8 @@
       NIXOS_OZONE_WL = "1";
       T_QPA_PLATFORM = "wayland";
       GDK_BACKEND = "wayland";
+      TERMINAL = "kitty";
+      BROWSER = "firefox";
     };
   };
 }

@@ -3,6 +3,9 @@
 
 {
   home.packages = with pkgs ; [
+    wireguard-tools
+    clang-tools
+    alacritty
     speedtest-cli
     inetutils
     sysbench

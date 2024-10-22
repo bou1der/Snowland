@@ -11,15 +11,6 @@
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
 
-  # boot.extraModulePackages = with config.boot.kernelPackages;
-  # [
-  #   wireguard 
-  # ];
-
-  # boot.extraModprobeConfig = ''
-  #   acpi_backlight=vendor
-  # '';
-
   boot.kernelParams = [
     "acpi_backlight=vendor"
   ];
