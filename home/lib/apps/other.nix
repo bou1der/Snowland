@@ -11,6 +11,7 @@
     vesktop
     obs-studio
     ani-cli
+    # libreoffice-qt
     prismlauncher
     teamspeak_client
     telegram-desktop

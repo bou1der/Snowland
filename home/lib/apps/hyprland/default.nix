@@ -8,6 +8,7 @@ in
   imports = [
     ./hyprlock.nix
     ./hyprpaper.nix
+    ./hypridle.nix
   ];
 
   xdg.portal = {
@@ -27,8 +28,6 @@ in
       pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
-    
-
   };
   wayland.windowManager.hyprland = {
     enable = true;
@@ -54,6 +53,7 @@ in
         "$mod, p, exec, zsh -c 'proxychains4 $(rofi -config ~/.config/rofi/proxy.rasi -dmenu -p '🐢' -yoffset 800)' "
         "$mod, f, fullscreen"
         "$mod SHIFT, A, exec, hyprshot -m region --clipboard-only -z"
+        "$mod alt, l, exec, hyprlock --immediate & disown & systemctl suspend "
 
         "$mod, h, movefocus, l"
         "$mod, l, movefocus, r"
