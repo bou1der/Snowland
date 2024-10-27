@@ -11,6 +11,7 @@
 				"python",
 				"typescript",
 				"typescript",
+        "nix",
 				"tsx",
 				"css",
 				"html",

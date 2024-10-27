@@ -1,9 +1,12 @@
-{config, lib, ... }:
+{ config, lib, ... }:
 
 {
-  services = {
-    acpid = {
-      enable = true;
-    };
+  services.libinput.enable = true;
+  services.acpid.enable = true;
+
+  services.tor = {
+    enable = true;
+    openFirewall = true;
+    client.enable = true;
   };
 }

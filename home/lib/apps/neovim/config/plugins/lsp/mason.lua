@@ -19,7 +19,8 @@
 				"jsonls",
 				"tailwindcss",
         "pyright",
-        "clangd"
+        "clangd",
+        "rnix"
 			},
 		})
 
@@ -31,7 +32,8 @@
 				"black",
         "pyright",
 				"biome",
-        "clangd"
+        "clangd",
+        "rnix"
 			},
 		})
 	end,

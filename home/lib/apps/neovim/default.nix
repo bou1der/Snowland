@@ -1,5 +1,4 @@
-
-{config, pkgs, lib, ...}:
+{ config, pkgs, lib, ... }:
 
 let
   fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
@@ -35,36 +34,37 @@ in
       {
         plugin = LazyVim;
         config = ''
-          ${read ./config/lazyConfig.lua}
+            ${read ./config/lazyConfig.lua}
 
-          ${depends ''
-            require("lazy").setup({
-              {
-                ${file ./config/plugins/colorschemes.lua}
-                ${file ./config/plugins/mini.lua}
-                ${file ./config/plugins/treesitter.lua}
-                ${file ./config/plugins/supermaven.lua}
-                ${file ./config/plugins/ui.lua}
-                ${file ./config/plugins/nvim_tree.lua}
-                ${file ./config/plugins/nonels.lua}
-                ${file ./config/plugins/formatting.lua}
-                ${file ./config/plugins/cmp.lua}
-                ${file ./config/plugins/cmake-tools.lua}
-                ${file ./config/plugins/runner.lua}
-                ${file ./config/plugins/markdown.lua}
+            ${depends ''
+              require("lazy").setup({
+                {
+                  ${file ./config/plugins/colorschemes.lua}
+                  ${file ./config/plugins/mini.lua}
+                  ${file ./config/plugins/treesitter.lua}
+                  ${file ./config/plugins/supermaven.lua}
+                  ${file ./config/plugins/ui.lua}
+                  ${file ./config/plugins/nvim_tree.lua}
+                  ${file ./config/plugins/nonels.lua}
+                  ${file ./config/plugins/formatting.lua}
+                  ${file ./config/plugins/cmp.lua}
+                  ${file ./config/plugins/cmake-tools.lua}
+                  ${file ./config/plugins/runner.lua}
+                  ${file ./config/plugins/markdown.lua}
 
-              },
-              {
-                ${file ./config/plugins/lsp/mason.lua}
-                ${file ./config/plugins/lsp/lspconfig.lua}
-              }
-            })
-            ''
-        }
+                },
+                {
+                  ${file ./config/plugins/lsp/mason.lua}
+                  ${file ./config/plugins/lsp/lspconfig.lua}
+                }
+              })
+              ''
+          }
         '';
       }
 
-      lazygit-nvim
+      # lazygit-nvim
+      rocks-nvim
     ];
   };
 }

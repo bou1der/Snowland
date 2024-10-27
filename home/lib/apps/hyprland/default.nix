@@ -1,8 +1,7 @@
-
 { pkgs, config, lib, ... }:
 
 let
-    walls = pkgs.lib.importJSON "/home/boulder/.cache/wal/colors.json";
+  walls = pkgs.lib.importJSON "/home/boulder/.cache/wal/colors.json";
 in
 {
   imports = [
@@ -15,8 +14,8 @@ in
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
     configPackages = [
       pkgs.xdg-desktop-portal-hyprland
@@ -34,7 +33,7 @@ in
     xwayland.enable = true;
     settings = {
 
-      monitor = [ 
+      monitor = [
         "eDP-1,1920x1200@60, 0x0, 1"
         "DP-2,1920x550@60, 0x1200, 1"
         # "HDMI-A-1, 2560x1080@60, -2560x0, 1"
@@ -82,7 +81,7 @@ in
         "$mod, S, togglespecialworkspace, magic"
         "$mod SHIFT, S, movetoworkspace, special:magic"
       ];
-      
+
       bindm = [
         "$mod, mouse:272, movewindow"
       ];
@@ -111,7 +110,7 @@ in
         };
 
       };
-      
+
       xwayland = {
         "force_zero_scaling" = true;
       };
@@ -129,7 +128,7 @@ in
         # "col.active_border" = "rgba(" + walls.colors.color1 + ")" ;
         # "col.inactive_border" = "$color0";
       };
-      
+
       decoration = {
         rounding = 6;
         drop_shadow = false;
@@ -140,13 +139,18 @@ in
           vibrancy = 0.1696;
         };
       };
-      
+
+      # TODO Настроить свайпы
+      gestures = {
+        workspace_swipe = true;
+      };
+
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
 
-      windowrule =[
+      windowrule = [
         "opacity[0.5] ^(dunst)$"
       ];
 

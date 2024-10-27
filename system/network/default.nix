@@ -1,4 +1,3 @@
-
 { config, lib, pkgs, ... }:
 
 {
@@ -29,7 +28,7 @@
   networking.networkmanager = {
     enable = true;
     dns = "systemd-resolved";
-    insertNameservers = ["208.67.222.222" "208.67.220.220"];
-  };  
+    insertNameservers = [ "208.67.222.222" "208.67.220.220" ];
+  };
 
 }

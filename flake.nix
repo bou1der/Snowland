@@ -4,9 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    yandex-music= {
-      url = "github:cucumber-sp/yandex-music-linux";
-    };
+    # yandex-music= {
+    #   url = "github:cucumber-sp/yandex-music-linux";
+    # };
 
     home-manager = {
       url = github:nix-community/home-manager;
@@ -15,7 +15,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, yandex-music }: 
+  outputs = { self, nixpkgs, home-manager }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,7 +23,8 @@
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-    in {
+    in
+    {
       nixosConfigurations = {
         boulder = lib.nixosSystem {
           inherit system;
@@ -36,18 +37,18 @@
           modules = [
             ./home/home.nix
             {
-              imports = [
-                yandex-music.homeManagerModules.default
-              ];
+              # imports = [
+              #   yandex-music.homeManagerModules.default
+              # ];
               home = {
                 username = "boulder";
                 homeDirectory = "/home/boulder";
                 stateVersion = "24.05";
               };
-              programs.yandex-music = {
-                enable = true;
-                tray.enable = true;
-              };
+              # programs.yandex-music = {
+              #   enable = true;
+              #   tray.enable = true;
+              # };
             }
           ];
         };

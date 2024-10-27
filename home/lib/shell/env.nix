@@ -1,8 +1,8 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   home.packages = with pkgs ; [
 
-    (python312.withPackages (env : with env;[
+    (python312.withPackages (env: with env;[
       pip
       pipx
       virtualenv
@@ -12,13 +12,14 @@
     # nodePackages.prettier
     typescript
     gnumake42
-	  nodejs_22
+    nodejs_22
     xdg-utils
+    libinput
     ripgrep
     redis
     cmake
-	  unzip
-	  zip
+    unzip
+    zip
     bun
   ];
 

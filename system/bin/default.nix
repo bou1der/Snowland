@@ -1,21 +1,12 @@
-{config, lib, ... }:
+{ config, lib, ... }:
 
 {
   imports = [
     ./services.nix
     ./proxy.nix
+    ./boot.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-
-  boot.kernelParams = [
-    "acpi_backlight=vendor"
-  ];
-
-  services.libinput.enable = true;
 
   time.timeZone = "Europe/Moscow";
   networking.hostName = "nixos";

@@ -12,6 +12,7 @@
     hyprshot
     evtest
     ventoy
+    cargo
     pywal
     btop
     nmap

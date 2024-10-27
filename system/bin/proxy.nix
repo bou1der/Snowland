@@ -1,5 +1,4 @@
-
-{...}:
+{ ... }:
 
 {
   programs.proxychains = {
@@ -13,7 +12,7 @@
         type = "socks5";
         host = "127.0.0.1";
         port = 9050;
-    };
+      };
       PL = {
         enable = true;
         type = "socks4";
@@ -24,11 +23,4 @@
   };
 
 
-  services.tor = {
-    enable = true;
-    openFirewall = true;
-    client = {
-      enable = true;
-    };
-  };
 }

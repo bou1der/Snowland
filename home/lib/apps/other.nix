@@ -1,9 +1,9 @@
-
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs ; [
     helvum
+    spotify
     pavucontrol
     neofetch
     blueman
@@ -11,7 +11,7 @@
     vesktop
     obs-studio
     ani-cli
-    # libreoffice-qt
+    libreoffice-qt
     prismlauncher
     teamspeak_client
     telegram-desktop
@@ -23,5 +23,6 @@
     yazi
     tradingview
   ];
+
 
 }
