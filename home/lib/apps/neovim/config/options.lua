@@ -1,34 +1,35 @@
-local opt = vim.opt
+vim.opt.mouse = "a"
 
-opt.clipboard = "unnamedplus"
-opt.mouse = "a"
+vim.api.nvim_set_option("clipboard","unnamed")
 
-opt.number = true
-opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-opt.wrap = false
-opt.scrolloff = 1
-opt.breakindent = true
-opt.undofile = true
-opt.signcolumn = "yes"
-opt.completeopt = "menuone,noselect"
+vim.opt.wrap = false
+vim.opt.scrolloff = 1
+vim.opt.breakindent = true
+vim.opt.undofile = true
+vim.opt.signcolumn = "yes"
+vim.opt.completeopt = "menuone,noselect"
 
-opt.hlsearch = false
-opt.ignorecase = true
-opt.smartcase = true
-opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.smartcase = true
 
-opt.updatetime = 250
+vim.opt.updatetime = 250
 
-opt.termguicolors = true
-opt.background = "dark"
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
 
-opt.expandtab = true
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
-opt.showmode = false
-opt.laststatus = 0
-opt.ruler = false
-opt.showcmd = false
+vim.opt.showmode = false
+vim.opt.laststatus = 0
+vim.opt.ruler = false
+vim.opt.showcmd = false
+
+vim.api.nvim_set_option("clipboard","unnamed")

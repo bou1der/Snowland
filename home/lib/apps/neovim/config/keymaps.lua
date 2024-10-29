@@ -18,3 +18,4 @@ vim.api.nvim_set_keymap("n", "<leader>h", ":CMakeRun<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<leader>H", ":CMakeQuickRun<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>n", ":CMakeQuickBuild<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>M", ":RunCode<CR>", { noremap = true, silent = true })
+
