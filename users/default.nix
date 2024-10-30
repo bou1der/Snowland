@@ -1,9 +1,0 @@
-
-
-{
-  imports = [
- 	./boulder.nix
-  ];
-
-
-}
