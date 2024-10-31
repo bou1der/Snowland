@@ -22,7 +22,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.warn-dirty = false;
 
-  deployment.targetHost = "46.150.174.46";
+  deployment.targetHost = "192.168.0.5";
   deployment.targetUser = "root";
   deployment.buildOnTarget = true;
 
