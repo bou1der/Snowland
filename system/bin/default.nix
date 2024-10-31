@@ -5,6 +5,5 @@
     ./env.nix
     ./common.nix
     ./boot.nix
-    ../options.nix
   ];
 }

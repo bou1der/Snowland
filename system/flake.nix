@@ -20,10 +20,11 @@
       lib = nixpkgs.lib;
     in
     {
-      nixosConfigurations.${vars.username} = lib.nixosSystem {
-        system = vars.system;
-        nixpkgs.config.allowUnfree = true;
-        modules = [ ./bin ];
+      nixosConfigurations = {
+        "${vars.username}" = lib.nixosSystem {
+          system = vars.system;
+          modules = [ ./bin ./hardware-configuration.nix ];
+        };
       };
       hmConfig = {
         "${vars.username}" = home-manager.lib.homeManagerConfiguration {
