@@ -10,6 +10,7 @@
     sysbench
     hyprshot
     colmena
+    openssl
     evtest
     ventoy
     cargo

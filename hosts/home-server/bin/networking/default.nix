@@ -9,7 +9,7 @@
     nat.internalInterfaces = [ "wg0" ];
 
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ 22001 30033 25565 ];
+    firewall.allowedTCPPorts = [ 22001 30033 25565 8008 ];
     firewall.allowedUDPPorts = [ 9987 51820 ];
   };
 }

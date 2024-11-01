@@ -5,5 +5,6 @@
     ./env.nix
     ./common.nix
     ./boot.nix
+    ./users
   ];
 }
