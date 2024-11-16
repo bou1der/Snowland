@@ -128,7 +128,7 @@
 
       decoration = {
         rounding = 6;
-        drop_shadow = false;
+        # drop_shadow = false;
         blur = {
           enabled = true;
           size = 3;

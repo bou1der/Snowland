@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 
 let
   key = secret: "${builtins.readFile /home/boulder/Snowland/.env/sshkeys/${secret}}";

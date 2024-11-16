@@ -21,9 +21,9 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.warn-dirty = false;
 
+
   deployment.targetHost = "192.168.0.5";
   deployment.targetUser = "root";
   deployment.targetPort = 22001;
   deployment.buildOnTarget = true;
-
 }

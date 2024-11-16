@@ -20,7 +20,7 @@
       #   on-resume = "brightnessctl -r";                 # monitor backlight restore.
       # }
       {
-        timeout = 400;
+        timeout = 360;
         on-timeout = "hyprlock --immediate & disown & systemctl suspend";
       }
     ];

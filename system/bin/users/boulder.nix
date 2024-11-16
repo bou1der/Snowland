@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 {
-  users.users.boulder = {
+  users.users.${vars.username} = {
     isNormalUser = true;
-    home = "/home/boulder";
+    home = "/home/${vars.username}";
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
     extraGroups = [ "wheel" "networkmanager" "docker" "audio" "tor" ];

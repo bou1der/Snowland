@@ -17,6 +17,7 @@
       upfl = "sudo nix-channel --update && nix flake update";
       nsw = "sudo nixos-rebuild switch --flake .#boulder --impure";
       hsw = "nix build .#hmConfig.boulder.activationPackage --impure && ./result/activate";
+      rsw = "colmena apply --impure";
       gp = "git push";
       ga = "git add";
       gc = "git commit";

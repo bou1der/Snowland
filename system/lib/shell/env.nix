@@ -25,7 +25,6 @@
   ];
 
 
-
   home = {
     sessionVariables = {
       BROWSER = "firefox";

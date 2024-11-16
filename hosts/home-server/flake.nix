@@ -2,10 +2,8 @@
   # description = "Home server dotfile 🐢";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-lts.url = "github:nixos/nixpkgs/nixos-unstable";
-
   };
 
   outputs = { nixpkgs, nixpkgs-lts, ... }@inputs:
@@ -32,7 +30,6 @@
             inherit inputs;
           };
         };
-        #--------------------------
 
         home-server = import ./image.nix;
       };
