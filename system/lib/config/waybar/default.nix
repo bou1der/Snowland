@@ -12,7 +12,6 @@ in
       mainBar = {
         layer = "top";
         position = "top";
-        # height = 32;
         width = 1920;
         output = "eDP-1";
         margin-top = 6;

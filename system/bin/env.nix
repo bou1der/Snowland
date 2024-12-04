@@ -12,7 +12,8 @@
     fira-code-symbols
     liberation_ttf
     siji
-    nerdfonts
+    nerd-fonts.hack
+
   ];
 
   environment.systemPackages = with pkgs; [

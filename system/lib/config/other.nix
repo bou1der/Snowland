@@ -15,6 +15,7 @@
     prismlauncher
     teamspeak_client
     telegram-desktop
+    virtualbox
     vscode
     postman
     tor-browser

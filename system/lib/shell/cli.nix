@@ -9,6 +9,7 @@
     inetutils
     sysbench
     hyprshot
+    gobuster
     colmena
     openssl
     evtest

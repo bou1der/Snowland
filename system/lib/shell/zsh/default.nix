@@ -18,6 +18,8 @@
       nsw = "sudo nixos-rebuild switch --flake .#boulder --impure";
       hsw = "nix build .#hmConfig.boulder.activationPackage --impure && ./result/activate";
       rsw = "colmena apply --impure";
+      doclean = "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker volume rm $(docker volume ls -q)";
+      dost = "docker stop $(docker ps -aq)";
       gp = "git push";
       ga = "git add";
       gc = "git commit";
