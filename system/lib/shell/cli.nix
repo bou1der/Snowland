@@ -19,6 +19,7 @@
     btop
     nmap
     tree
+    deno
     tmux
   ];
 }

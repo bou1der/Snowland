@@ -41,7 +41,6 @@ in
                   ${text ./config/plugins/colorschemes.lua}
                   ${text ./config/plugins/mini.lua}
                   ${text ./config/plugins/treesitter.lua}
-                  ${text ./config/plugins/supermaven.lua}
                   ${text ./config/plugins/ui.lua}
                   ${text ./config/plugins/nvim_tree.lua}
                   ${text ./config/plugins/nonels.lua}
