@@ -22,7 +22,7 @@
   nix.settings.warn-dirty = false;
 
 
-  deployment.targetHost = "192.168.0.5";
+  deployment.targetHost = "192.168.88.252";
   deployment.targetUser = "root";
   deployment.targetPort = 22001;
   deployment.buildOnTarget = true;

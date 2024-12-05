@@ -5,3 +5,4 @@
 
 system/result
 system/flake.lock
+hosts/**/flake.lock

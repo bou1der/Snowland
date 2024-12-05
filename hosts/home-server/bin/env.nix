@@ -8,6 +8,7 @@
     btop
     jdk
     git
+    tmux
     bun
   ];
 }
