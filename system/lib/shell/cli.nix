@@ -3,9 +3,9 @@
 {
   home.packages = with pkgs ; [
     wireguard-tools
+    speedtest-cli
     clang-tools
     alacritty
-    speedtest-cli
     inetutils
     sysbench
     hyprshot

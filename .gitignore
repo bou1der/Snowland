@@ -1,8 +1,7 @@
-.env/
 .env
-.env/**/*
-.env/*
+.keys
+
+tesat.txt
 
 system/result
 system/flake.lock
-hosts/**/flake.lock

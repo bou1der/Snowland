@@ -4,12 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-lts.url = "github:nixos/nixpkgs/nixos-unstable";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { nixpkgs, nixpkgs-lts, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-lts, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";
-
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -18,7 +18,6 @@
         inherit system;
         config.allowUnfree = true;
       };
-
     in
 
     {
@@ -28,6 +27,7 @@
 
           specialArgs = {
             inherit inputs;
+            soup-module = sops-nix.nixosModules.sops;
           };
         };
 

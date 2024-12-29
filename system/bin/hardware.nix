@@ -20,7 +20,7 @@
   services.blueman.enable = true;
 
   services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       TLP_ENABLE = 1;
 

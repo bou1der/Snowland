@@ -15,10 +15,16 @@
     prismlauncher
     teamspeak_client
     telegram-desktop
-    virtualbox
+    beekeeper-studio
+    google-chrome
+    # virtualbox
+    monero-gui
+    monero-cli
     vscode
     postman
     tor-browser
+    age
+    sops
     mpv
     obsidian
     yazi
