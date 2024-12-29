@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs ; [
-
     (python312.withPackages (env: with env;[
       pip
       pipx

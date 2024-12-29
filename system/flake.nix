@@ -19,31 +19,40 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
     let
       vars = import ./utils.nix;
       lib = nixpkgs.lib;
       pkgs = import nixpkgs {
         system = vars.system;
       };
-      special = {
-        inherit inputs;
-        inherit vars;
-      };
     in
     {
       nixosConfigurations = {
         "${vars.username}" = lib.nixosSystem {
           system = vars.system;
-          specialArgs = special;
-          modules = [ ./bin ./hardware-configuration.nix ];
+
+          specialArgs = {
+            inherit inputs;
+            inherit vars;
+            soup-module = sops-nix.nixosModules.sops;
+          };
+
+          modules = [
+            ./bin
+            ./hardware-configuration.nix
+            ../soups.nix
+          ];
         };
       };
       hmConfig = {
         "${vars.username}" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${vars.system};
-          extraSpecialArgs = special;
-
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit vars;
+            soup-module = sops-nix.homeManagerModules.sops;
+          };
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
@@ -54,6 +63,7 @@
               };
             }
             ./lib
+            ../soups.nix
           ];
         };
       };
