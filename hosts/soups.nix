@@ -17,4 +17,9 @@ in
 
     inherit secrets;
   };
+
+  # deployment.keys."sops-secrets" = {
+  #
+  # };
+
 }

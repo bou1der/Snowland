@@ -1,8 +1,5 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
-let
-  env = path: builtins.readFile config.sops.secrets."${path}".path;
-in
 {
   services.libinput.enable = true;
   services.acpid.enable = true;
@@ -35,14 +32,4 @@ in
     SOPS_AGE_KEY_FILE = "$HOME/Snowland/.keys";
   };
 
-  services.monero = {
-    enable = true;
-    mining.enable = false;
-
-    rpc = {
-      user = "boulder";
-      address = env "ips/home-local";
-      port = 18081;
-    };
-  };
 }
