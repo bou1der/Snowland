@@ -1,5 +1,8 @@
-{ ... }:
+{ config, ... }:
 
+let
+  env = path: builtins.readFile config.sops.secrets."${path}".path;
+in
 {
   system.stateVersion = "24.05"; #DONT TOUCH
 
@@ -25,5 +28,15 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 30d";
+  };
+
+  services.monero = {
+    enable = true;
+    mining.enable = false;
+
+    rpc = {
+      address = env "ips/home-local";
+      port = 18081;
+    };
   };
 }
