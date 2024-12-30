@@ -29,14 +29,4 @@ in
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-
-  services.monero = {
-    enable = true;
-    mining.enable = false;
-
-    rpc = {
-      address = env "ips/home-local";
-      port = 18081;
-    };
-  };
 }

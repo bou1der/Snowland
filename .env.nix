@@ -2,7 +2,7 @@ let
   format = "yaml";
   base = {
     inherit format;
-    mode = "0440";
+    mode = "7777";
     group = "root";
     sopsFile = ./env.yaml;
   };
@@ -17,5 +17,6 @@ in
     "ips/home-remote"= base;
     "monero/login" = base;
     "monero/password" = base;
+    "monero/address" = base;
   };
 }
