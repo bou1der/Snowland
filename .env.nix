@@ -18,5 +18,7 @@ in
     "monero/login" = base;
     "monero/password" = base;
     "monero/address" = base;
+    "home-coolify/public" = base;
+    "home-coolify/private" = base;
   };
 }

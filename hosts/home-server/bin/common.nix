@@ -1,5 +1,8 @@
-{ name, pkgs, ... }:
+{ name, pkgs, config, ... }:
 
+let
+  env = path: builtins.readFile config.sops.secrets."${path}".path;
+in
 {
   system.stateVersion = "24.05";
 
@@ -22,7 +25,7 @@
   nix.settings.warn-dirty = false;
 
 
-  deployment.targetHost = "192.168.88.252";
+  deployment.targetHost = env "ips/home-local";
   deployment.targetUser = "root";
   deployment.targetPort = 22001;
   deployment.buildOnTarget = true;

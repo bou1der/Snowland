@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
 
+let
+  key = secret: "${builtins.readFile secret}";
+in
 {
   systemd.services.coolify-prepare-files = {
     description = "Setup files for coolify";
@@ -25,7 +28,8 @@
       cp -f "${/home/boulder/Snowland/.env/coolify}" /data/coolify/source/.env
 
       if [ ! -f "/data/coolify/ssh/keys/id.root@host.docker.internal" ]; then
-        ssh-keygen -f /data/coolify/ssh/keys/id.root@host.docker.internal -t ed25519 -N "" -C root@coolify
+        echo "${key /home/boulder/Snowland/.env/sshkeys/coolify-localhost.pub}" >  /data/coolify/ssh/keys/id.root@host.docker.internal.pub
+        echo "${key /home/boulder/Snowland/.env/sshkeys/coolify-localhost}" >  /data/coolify/ssh/keys/id.root@host.docker.internal
       fi
 
 

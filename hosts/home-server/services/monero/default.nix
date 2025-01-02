@@ -28,6 +28,7 @@ in
       rpc-restricted-bind-port=18089 
 
       rpc-ssl=autodetect
+      db-sync-mode=fast
 
       zmq-pub=tcp://127.0.0.1:18083                      
 
@@ -36,5 +37,24 @@ in
       out-peers=24 
       in-peers=48  
     '';
+  };
+
+  services.xmrig = {
+    enable = false;
+    settings = {
+      autosave = true;
+      cpu = true;
+      opencl = false;
+      cuda = false;
+
+      pools = [
+        {
+          coin = "monero";
+          url = "xmr-eu1.nanopool.org:14433";
+          user = env "monero/address";
+          tls = true;
+        }
+      ];
+    };
   };
 }
