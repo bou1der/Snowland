@@ -5,6 +5,7 @@
     wireguard-tools
     speedtest-cli
     clang-tools
+    monero-cli
     alacritty
     inetutils
     sysbench
@@ -21,5 +22,7 @@
     tree
     deno
     tmux
+    sops
+    age
   ];
 }

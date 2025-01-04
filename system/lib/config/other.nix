@@ -7,7 +7,6 @@
     pavucontrol
     neofetch
     blueman
-    wtwitch
     vesktop
     obs-studio
     ani-cli
@@ -17,14 +16,11 @@
     telegram-desktop
     beekeeper-studio
     google-chrome
-    # virtualbox
     monero-gui
-    monero-cli
+    winbox
     vscode
     postman
     tor-browser
-    age
-    sops
     mpv
     obsidian
     yazi

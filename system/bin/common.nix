@@ -1,8 +1,5 @@
-{ config, ... }:
+{ ... }:
 
-let
-  env = path: builtins.readFile config.sops.secrets."${path}".path;
-in
 {
   system.stateVersion = "24.05"; #DONT TOUCH
 
@@ -23,6 +20,7 @@ in
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   nix.settings.warn-dirty = false;
   nix.gc = {
     automatic = true;

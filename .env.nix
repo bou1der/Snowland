@@ -3,7 +3,7 @@ let
   base = {
     inherit format;
     mode = "7777";
-    group = "root";
+    group = "root"; # TODO Fix this for home manager
     sopsFile = ./env.yaml;
   };
 in
@@ -15,6 +15,7 @@ in
     "git/token" = base;
     "ips/home-local" = base;
     "ips/home-remote"= base;
+    "ips/nix-nether"= base;
     "monero/login" = base;
     "monero/password" = base;
     "monero/address" = base;
