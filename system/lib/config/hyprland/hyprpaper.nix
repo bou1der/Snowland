@@ -3,6 +3,7 @@
 {
 
   home.packages = with pkgs ; [
+    hyprland-qtutils
     hyprpaper
     waypaper
   ];
@@ -19,6 +20,7 @@
       wallpaper = [
         "eDP-1,~/.config/.current-wallpaper"
         "DP-2,~/.config/.current-wallpaper"
+        "HDMI-A-1,~/.config/.current-wallpaper"
       ];
     };
   };

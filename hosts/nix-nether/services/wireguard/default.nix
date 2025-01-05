@@ -16,6 +16,7 @@ in
       allowedTCPPorts = [ 22001 ];
       allowedUDPPorts = [ 51820 ];
 
+
       extraCommands = ''
         iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
       '';
@@ -27,17 +28,28 @@ in
         listenPort = 51820;
         privateKey = env "wireguard/private";
 
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+        '';
+
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+        '';
+
         peers = [
           {
             publicKey = env "wireguard/boulder-phone";
+            presharedKey = env "wireguard/boulder-preshared";
             allowedIPs = ["10.100.0.101/32"];
           }
           {
             publicKey = env "wireguard/boulder-laptop";
+            presharedKey = env "wireguard/boulder-preshared";
             allowedIPs = ["10.100.0.102/32"];
           }
           {
             publicKey = env "wireguard/boulder-pc";
+            presharedKey = env "wireguard/boulder-preshared";
             allowedIPs = ["10.100.0.103/32"];
           }
           {

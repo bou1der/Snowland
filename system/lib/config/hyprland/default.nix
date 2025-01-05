@@ -14,11 +14,13 @@
       common.default = [ "gtk" ];
       hyprland.default = [ "gtk" "hyprland" ];
     };
+
     configPackages = [
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
+
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-wlr
@@ -28,12 +30,15 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+
     settings = {
 
       monitor = [
-        "eDP-1,1920x1200@60, 0x0, 1"
-        "DP-2,1920x550@60, 0x1200, 1"
-        # "HDMI-A-1, 2560x1080@60, -2560x0, 1"
+        #"eDP-1,1920x1200@60, 0x0, 1"
+        #"DP-2,1920x550@60, 0x1200, 1"
+        "HDMI-A-1, 2560x1080@60, -2560x0, 1"
+        "eDP-1, disable"
+        "DP-2, disable"
       ];
 
       "$mod" = "SUPER";

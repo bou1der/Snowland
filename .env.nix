@@ -21,11 +21,13 @@ in
     "monero/address" = base;
     "home-coolify/public" = base;
     "home-coolify/private" = base;
+
     "wireguard/private" = base;
 
     "wireguard/boulder-phone" = base;
     "wireguard/boulder-pc" = base;
     "wireguard/boulder-laptop" = base;
+    "wireguard/boulder-preshared" = base;
 
     "wireguard/xelo-phone" = base;
     "wireguard/xelo-laptop" = base;
