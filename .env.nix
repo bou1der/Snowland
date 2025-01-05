@@ -21,5 +21,21 @@ in
     "monero/address" = base;
     "home-coolify/public" = base;
     "home-coolify/private" = base;
+    "wireguard/private" = base;
+
+    "wireguard/boulder-phone" = base;
+    "wireguard/boulder-pc" = base;
+    "wireguard/boulder-laptop" = base;
+
+    "wireguard/xelo-phone" = base;
+    "wireguard/xelo-laptop" = base;
+    "wireguard/xelo-pc" = base;
+
+    "wireguard/shipownik-mobile" = base;
+    "wireguard/shipownik-pc" = base;
+
+    "wireguard/yzifbro-pc" = base;
+    "wireguard/yzifbro-mobile" = base;
+    "wireguard/yzifbro-tablet" = base;
   };
 }

@@ -13,6 +13,7 @@
     gobuster
     colmena
     openssl
+    wg-bond
     evtest
     ventoy
     cargo
