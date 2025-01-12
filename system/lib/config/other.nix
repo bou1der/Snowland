@@ -17,6 +17,8 @@
     beekeeper-studio
     google-chrome
     monero-gui
+    sunshine
+    moonlight-qt
     winbox
     vscode
     postman

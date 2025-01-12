@@ -19,6 +19,7 @@ in
       password = env "monero/password";
     };
 
+    dataDir = "/mnt/nvme-mount/monero";
 
     extraConfig = ''
       p2p-bind-ip=0.0.0.0

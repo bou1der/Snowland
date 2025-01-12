@@ -3,7 +3,7 @@ let
   base = {
     inherit format;
     mode = "7777";
-    group = "root"; # TODO Fix this for home manager
+    # group = "root"; # TODO Fix this for home manager
     sopsFile = ./env.yaml;
   };
 in
@@ -21,6 +21,8 @@ in
     "monero/address" = base;
     "home-coolify/public" = base;
     "home-coolify/private" = base;
+
+    "shadowsocks/password" = base;
 
     "wireguard/private" = base;
 

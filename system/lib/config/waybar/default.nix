@@ -7,15 +7,15 @@ in
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    settings = {
 
+    settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        # width = 1920;
-        width = 2560;
-        #output = "eDP-1";
-        output = "HDMI-A-1";
+        width = 1920;
+        output = "eDP-1";
+        # width = 2560;
+        # output = "HDMI-A-1";
         margin-top = 6;
         spacing = 8;
 
@@ -38,15 +38,6 @@ in
             "6" = "";
             "7" = "";
           };
-          persistent-workspaces = {
-            #   "1" = ["eDP-1"];
-            #   "2" = ["eDP-1"];
-            #   "3" = ["eDP-1"];
-            #   "4" = ["eDP-1"];
-            #   "5" = ["eDP-1"];
-            "6" = [ "eDP-1" ];
-            "7" = [ "eDP-1" ];
-          };
         };
         "tray" = {
           icon-size = 16;
@@ -55,7 +46,7 @@ in
         };
         "clock" = {
           format = "{:%H:%M %a}";
-
+          tooltip = false;
         };
         "custom/home-button" = {
           format = " ";
@@ -63,32 +54,32 @@ in
         };
       };
 
-      secondBar = {
-        layer = "top";
-        position = "right";
-        height = 550;
-        width = 32;
-        output = "DP-2";
-        spacing = 8;
-
-        modules-left = [ ];
-        modules-center = [ ];
-        modules-right = [ "battery" ];
-
-
-        battery = {
-          bat = "BAT1";
-          interval = 60;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{capacity}% {icon}";
-          format-icons = [ " " " " " " " " " " ];
-          max-length = 25;
-        };
-
-      };
+      # secondBar = {
+      #   layer = "top";
+      #   position = "right";
+      #   height = 550;
+      #   width = 32;
+      #   output = "DP-2";
+      #   spacing = 8;
+      #
+      #   modules-left = [ ];
+      #   modules-center = [ ];
+      #   modules-right = [ "battery" ];
+      #
+      #
+      #   battery = {
+      #     bat = "BAT1";
+      #     interval = 60;
+      #     states = {
+      #       warning = 30;
+      #       critical = 15;
+      #     };
+      #     format = "{capacity}% {icon}";
+      #     format-icons = [ " " " " " " " " " " ];
+      #     max-length = 25;
+      #   };
+      #
+      # };
 
     };
 

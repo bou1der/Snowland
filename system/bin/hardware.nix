@@ -11,7 +11,6 @@
     enable = true;
     extraPackages = with pkgs; [
       vpl-gpu-rt
-      # intel-media-sdk
     ];
   };
   programs.turbovnc.ensureHeadlessSoftwareOpenGL = true;

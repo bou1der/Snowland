@@ -47,3 +47,4 @@
 		require("gitsigns").setup()
 	end,
 },
+

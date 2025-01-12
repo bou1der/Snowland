@@ -8,6 +8,7 @@
     ./firefox
     ./waybar
     ./neovim
+    ./eww
     ./other.nix
   ];
 }

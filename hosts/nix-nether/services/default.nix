@@ -1,5 +1,6 @@
 {
   imports = [
     ./wireguard
+    ./shadowsocks
   ];
 }

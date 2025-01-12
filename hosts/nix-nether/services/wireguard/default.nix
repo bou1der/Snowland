@@ -28,12 +28,19 @@ in
         listenPort = 51820;
         privateKey = env "wireguard/private";
 
+         
         postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE;
+          ${pkgs.iptables}/bin/iptables -A INPUT -p udp -m udp --dport 51820 -j ACCEPT;
+          ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT;
+          ${pkgs.iptables}/bin/iptables -A FORWARD -o wg0 -j ACCEPT;
         '';
 
         postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE;
+          ${pkgs.iptables}/bin/iptables -D INPUT -p udp -m udp --dport 51820 -j ACCEPT;
+          ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT;
+          ${pkgs.iptables}/bin/iptables -D FORWARD -o wg0 -j ACCEPT;
         '';
 
         peers = [

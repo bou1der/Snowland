@@ -30,6 +30,10 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/nvme-mount" = {
+    device = "/dev/disk/by-uuid/0689696b-d738-4183-8286-41346632bf6a";
+  };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/bb9b6ee8-8a19-4ae3-9823-11fcecedfcbc"; }];
 

@@ -23,7 +23,7 @@
     {
       colmena = {
         meta = {
-          nixpkgs = pkgs;
+          nixpkgs = pkgs-lts;
 
           specialArgs = {
             inherit inputs;

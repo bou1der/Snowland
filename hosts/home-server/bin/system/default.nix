@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ nixpkgs, pkgs, lib, config, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
