@@ -8,7 +8,7 @@ in
   services.monero = {
     enable = true;
     mining = {
-      enable = true;
+      enable = false;
       threads = 6;
       address = env "monero/address";
     };
@@ -46,7 +46,7 @@ in
       autosave = true;
       cpu = true;
       opencl = false;
-      cuda = false;
+      cuda = true;
 
       pools = [
         {

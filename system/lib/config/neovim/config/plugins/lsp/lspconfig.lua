@@ -2,10 +2,8 @@
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		-- "hrsh7th/cmp-nvim-lsp",
 		"pmizio/typescript-tools.nvim",
 		"nvim-lua/plenary.nvim",
-		-- { "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
@@ -37,12 +35,10 @@
 				})
 			end,
 			["lua_ls"] = function()
-				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
-							-- make the language server recognize "vim" global
 							diagnostics = {
 								globals = { "vim" },
 							},
@@ -63,15 +59,6 @@
 					},
 				})
 			end,
-			["ts_ls"] = function()
-				-- lspconfig["tsserver"].setup({
-				-- 	capabilities = capabilities,
-				-- 	on_attach = function(client)
-				-- 		client.server_capabilities.documentFormattingProvider = false
-				-- 	end,
-				-- })
-			end,
-			["biome"] = function() end,
       ["clangd"] = function()
         lspconfig["clangd"].setup({
           capabilities = capabilities,
@@ -80,6 +67,7 @@
           end,
         })
       end,
+			["biome"] = function() end,
 		})
 
 		local typescript_tools = require("typescript-tools")

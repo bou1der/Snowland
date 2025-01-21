@@ -10,7 +10,7 @@ in
     userName = env "git/name";
 
     extraConfig = {
-      credential.helper = "store ${env "git/token"}";
+      credential.helper = "store";
     };
   };
 }

@@ -11,6 +11,7 @@
     sysbench
     hyprshot
     gobuster
+    nest-cli
     colmena
     openssl
     wg-bond

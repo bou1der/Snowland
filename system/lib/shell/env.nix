@@ -11,7 +11,8 @@
     luajitPackages.luarocks
     typescript
     gnumake42
-    nodejs_22
+    nodePackages_latest.nodejs
+    # nodejs_22
     xdg-utils
     libinput
     ripgrep

@@ -27,6 +27,8 @@
     obsidian
     yazi
     tradingview
+    zoxide
+    fzf
   ];
 
 

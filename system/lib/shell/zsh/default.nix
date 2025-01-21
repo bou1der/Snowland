@@ -13,6 +13,8 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    initExtra = ''eval "$(zoxide init zsh)"'';
+
     shellAliases = {
       upfl = "sudo nix-channel --update && nix flake update";
       nsw = "sudo nixos-rebuild switch --flake .#boulder --impure";
@@ -20,6 +22,7 @@
       rsw = "colmena apply --impure";
       doclean = "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker volume rm $(docker volume ls -q)";
       dost = "docker stop $(docker ps -aq)";
+      cd = "z";
       gp = "git push";
       ga = "git add";
       gc = "git commit";

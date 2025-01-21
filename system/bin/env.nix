@@ -21,6 +21,8 @@
     wget
     curl
     tor
+    gcc
+    ta-lib
     docker
     docker-compose
     bridge-utils
@@ -30,6 +32,10 @@
 
   environment.variables = {
     SOPS_AGE_KEY_FILE = "$HOME/Snowland/.keys";
+    LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    TA_INCLUDE_PATH = "${pkgs.ta-lib}/include";
+    TA_LIBRARY_PATH = "${pkgs.ta-lib}/lib";
+
   };
 
 }
