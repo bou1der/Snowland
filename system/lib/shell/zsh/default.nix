@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, vars, ... }:
 
 {
   programs.oh-my-posh = {
@@ -13,12 +13,15 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''eval "$(zoxide init zsh)"'';
+    initExtra = ''
+      eval "$(zoxide init zsh)"
+      export PATH="/home/boulder/.bun/bin:$PATH"
+    '';
 
     shellAliases = {
       upfl = "sudo nix-channel --update && nix flake update";
-      nsw = "sudo nixos-rebuild switch --flake .#boulder --impure";
-      hsw = "nix build .#hmConfig.boulder.activationPackage --impure && ./result/activate";
+      nsw = "sudo nixos-rebuild switch --flake .#${vars.username} --impure";
+      hsw = "nix build .#hmConfig.${vars.username}.activationPackage --impure && ./result/activate";
       rsw = "colmena apply --impure";
       doclean = "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker volume rm $(docker volume ls -q)";
       dost = "docker stop $(docker ps -aq)";

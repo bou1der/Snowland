@@ -13,7 +13,6 @@
     liberation_ttf
     siji
     nerd-fonts.hack
-
   ];
 
   environment.systemPackages = with pkgs; [

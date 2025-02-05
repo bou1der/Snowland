@@ -13,9 +13,12 @@ in
     "git/name" = base;
     "git/email" = base;
     "git/token" = base;
+
     "ips/home-local" = base;
+    "ips/home-domain" = base;
     "ips/home-remote"= base;
     "ips/nix-nether"= base;
+
     "monero/login" = base;
     "monero/password" = base;
     "monero/address" = base;
@@ -41,5 +44,12 @@ in
     "wireguard/yzifbro-pc" = base;
     "wireguard/yzifbro-mobile" = base;
     "wireguard/yzifbro-tablet" = base;
+
+    "gitlab/email" = base;
+    "gitlab/password" = base;
+    "gitlab/secret" = base;
+    "gitlab/secret-db" = base;
+    "gitlab/secret-jws" = base;
+    "gitlab/secret-otp" = base;
   };
 }

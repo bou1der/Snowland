@@ -12,7 +12,6 @@ in
     nat.internalInterfaces = [ "wg0" ];
     
     firewall = {
-      enable = true;              
       allowedTCPPorts = [ 22001 ];
       allowedUDPPorts = [ 51820 ];
 

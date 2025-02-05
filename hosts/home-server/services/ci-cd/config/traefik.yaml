@@ -1,0 +1,33 @@
+# Static configuration for Traefik
+api:
+  dashboard: false
+
+# Dynamic configuration
+http:
+  routers:
+    # Router for HTTP requests (port 80)
+    gitlab-http:
+      rule: "Host(`gitlab.booulder.xyz`)"
+      entryPoints:
+        - "http"
+      service: "gitlab-service"
+      middlewares:
+        - redirect-to-https
+    gitlab-https:
+      rule: "Host(`gitlab.booulder.xyz`)"
+      entryPoints:
+        - "https"
+      service: "gitlab-service"
+      tls: {}
+
+  services:
+    gitlab-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:2424"
+
+  middlewares:
+    redirect-to-https:
+      redirectScheme:
+        scheme: "https"
+        permanent: true

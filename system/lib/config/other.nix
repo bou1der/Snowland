@@ -27,6 +27,7 @@
     obsidian
     yazi
     tradingview
+    bitwarden-desktop
     zoxide
     fzf
   ];

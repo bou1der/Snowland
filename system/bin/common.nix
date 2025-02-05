@@ -12,13 +12,7 @@
   services.logind.lidSwitch = "hybrid-sleep";
 
 
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    autoPrune.enable = true;
-    autoPrune.dates = "weekly";
-  };
-
+  programs.nix-ld.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.settings.warn-dirty = false;

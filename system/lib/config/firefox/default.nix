@@ -22,6 +22,7 @@
         userchrome-toggle
         sidebery
         vimium
+        bitwarden
         ublock-origin
         saka-key
       ];

@@ -6,6 +6,7 @@
     libnvidia-container
     speedtest-cli
     nodejs_22
+    neofetch
     pciutils
     openssl
     openssh
@@ -18,6 +19,7 @@
 
   environment.variables = {
     LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    PATH = "/home/boulder/.bun/bin:$PATH";
   };
 
 }

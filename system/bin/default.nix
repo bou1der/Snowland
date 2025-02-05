@@ -6,5 +6,6 @@
     ./common.nix
     ./boot.nix
     ./users
+    ./services
   ];
 }

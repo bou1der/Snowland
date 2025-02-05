@@ -24,6 +24,10 @@
     bun
   ];
 
+  # programs.bun = {
+  #   enable = true;
+  # };
+  #
 
   home = {
     sessionVariables = {

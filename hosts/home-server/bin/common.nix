@@ -11,7 +11,7 @@ in
   services.openssh.enable = true;
   users.defaultUserShell = pkgs.bash;
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
 
   virtualisation = {
     docker = {
@@ -19,6 +19,22 @@ in
       autoPrune.enable = true;
       autoPrune.dates = "weekly";
     };
+    oci-containers.backend = "docker";
+  };
+
+  systemd.services.prepare-docker = {
+    description = "Prepare docker settings";
+    script = ''
+      # coolify
+      ${pkgs.docker}/bin/docker  network inspect coolify >/dev/null 2>&1 || \
+      ${pkgs.docker}/bin/docker network create -attachable coolify
+
+      # host
+      # ${pkgs.docker}/bin/docker  network inspect local >/dev/null 2>&1 || \
+      # ${pkgs.docker}/bin/docker network create --driver host local
+    '';
+    after = [ "docker.service" "docker.socket" ];
+    wantedBy = [ "multi-user.target" ];
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -13,8 +13,12 @@
     gobuster
     nest-cli
     colmena
+
+    kubernetes
+    kubectl
+    minikube
+
     openssl
-    wg-bond
     evtest
     ventoy
     cargo

@@ -1,0 +1,12 @@
+http:
+  routers:
+    gitlab:
+      rule: "Host(`gitlab.example.com`)"
+      service: "gitlab-service"
+      entryPoints:
+        - "web"
+  services:
+    gitlab-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8080"
