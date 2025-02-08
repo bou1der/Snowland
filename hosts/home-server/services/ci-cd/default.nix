@@ -4,17 +4,32 @@ let
   env = path: builtins.readFile config.sops.secrets."${path}".path;
 in
 {
+  imports = [
+    ./runner.nix
+  ];
+
   systemd.services.prepare-traefik = {
     description = "Prepare traefik settings";
     script = ''
       #!${pkgs.bash}/bin/bash
+      DOMAIN='${env "ips/home-domain"}'
+      CERTS='registry'
+
+      for CERT in $CERTS
+      do
+        FOLDER_PATH="/var/lib/certs/$CERT"
+
+        if [ ! -d "$FOLDER_PATH" ]; then
+          mkdir -p "$FOLDER_PATH"
+          openssl req -x509 -newkey rsa:2048 -keyout $FOLDER_PATH/$CERT.$DOMAIN.key -out $FOLDER_PATH/$CERT.$DOMAIN.crt -days 365 -nodes -subj '/CN=$CERT.$DOMAIN'
+        fi
+      done
 
       if [ ! -d "/data/coolify/proxy" ]; then
         mkdir -p "/data/coolify/proxy"
       fi
 
       cp -f "${./config/traefik.yaml}" /data/coolify/proxy/traefik.yaml
-
     '';
     wantedBy = [ "docker-traefik.service" ];
   };
@@ -34,7 +49,7 @@ in
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock"
         "/data/coolify/proxy:/traefik"
-        "/run/gitlab/gitlab-workhorse.socket:/run/gitlab/gitlab-workhorse.socket"
+        # "/var/lib/certs:/certs"
       ];
       networks = [
         "host"
@@ -46,6 +61,7 @@ in
         "--api.dashboard=true"
         "--entrypoints.http.address=:80"
         "--entrypoints.https.address=:443"
+        "--entrypoints.git.address=:9418"
         "--entrypoints.http.http.encodequerysemicolons=true"
         "--entryPoints.http.http2.maxConcurrentStreams=50"
         "--entrypoints.https.http.encodequerysemicolons=true"
@@ -67,17 +83,18 @@ in
   services.gitlab = {
     enable = true;
     https = true;
+    host = "gitlab.${env "ips/home-domain"}";
+    port = 443;
 
-    # pages = {
-    #   enable = true;
-    #
-    #   settings = {
-    #     pages-domain = "git.booulder.xyz";
-    #     listen-proxy = [ "127.0.0.1:8888" ];
-    #     listen-https = [ "5656" ];
-    #     listen-http = [ "4646" ];
-    #   };
-    # };
+    registry = {
+      enable = true;
+      host = "registry.${env "ips/home-domain"}";
+      certFile = "/var/lib/certs/registry/registry.${env "ips/home-domain"}.crt";
+      keyFile = "/var/lib/certs/registry/registry.${env "ips/home-domain"}.key";
+      externalAddress = "registry.${env "ips/home-domain"}";
+      externalPort = 5000;
+      port = 5000;
+    };
 
     initialRootPasswordFile = "/run/secrets/gitlab/password";
     secrets =  {
@@ -95,19 +112,19 @@ in
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     httpConfig = ''
-        server {
-          listen 0.0.0.0:2424 ;
-          listen [::0]:2424 ;
-          server_name localhost ;
-          location / {
-            proxy_pass http://unix:/run/gitlab/gitlab-workhorse.socket;
-          }
+      client_max_body_size 500M;
+      server {
+        listen 0.0.0.0:2424 ;
+        listen [::0]:2424 ;
+        server_name localhost ;
+        location / {
+          proxy_pass http://unix:/run/gitlab/gitlab-workhorse.socket;
         }
+      }
     '';
 
     virtualHosts = {
       localhost = {
-        # locations."/".proxyPass = "http://localhost:8080";  # Прокси на порт GitLab
         locations."/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
       };
     };

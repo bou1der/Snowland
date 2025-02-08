@@ -17,6 +17,7 @@
     kubernetes
     kubectl
     minikube
+    tailscale
 
     openssl
     evtest

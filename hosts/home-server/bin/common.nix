@@ -13,6 +13,7 @@ in
 
   # services.tailscale.enable = true;
 
+  virtualisation.containerd.enable = true;
   virtualisation = {
     docker = {
       enable = true;
@@ -41,7 +42,7 @@ in
   nix.settings.warn-dirty = false;
 
 
-  deployment.targetHost = env "ips/home-local";
+  deployment.targetHost = env "ips/home-remote";
   deployment.targetUser = "root";
   deployment.targetPort = 22001;
   deployment.buildOnTarget = true;

@@ -11,20 +11,33 @@ http:
       entryPoints:
         - "http"
       service: "gitlab-service"
-      middlewares:
-        - redirect-to-https
+      # middlewares:
+      #   - redirect-to-https
     gitlab-https:
       rule: "Host(`gitlab.booulder.xyz`)"
       entryPoints:
         - "https"
+        - "http"
+        - "git"
       service: "gitlab-service"
       tls: {}
-
+    gitlab-registry:
+      rule: "Host(`registry.booulder.xyz`)"
+      service: "gitlab-registry"
+      tls: true
+      # tls:
+      #   certificates:
+      #     - certFile: /certs/registry/registry.booulder.xyz.crt
+      #       keyFile: /certs/registry/registry.booulder.xyz.key
   services:
     gitlab-service:
       loadBalancer:
         servers:
           - url: "http://localhost:2424"
+    gitlab-registry:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5000"
 
   middlewares:
     redirect-to-https:
