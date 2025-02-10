@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   kubeMasterIP = "127.0.0.1";
-  kubeMasterHostname = "booulder.xyz";
+  kubeMasterHostname = "api.kube";
   kubeMasterAPIServerPort = 6443;
   env = path: builtins.readFile config.sops.secrets."${path}".path;
 in

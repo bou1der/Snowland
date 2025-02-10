@@ -26,6 +26,7 @@
     docker-compose
     bridge-utils
     libnotify
+    shadowsocks-libev
     xwaylandvideobridge
   ];
 

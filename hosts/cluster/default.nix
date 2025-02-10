@@ -36,6 +36,7 @@ in
       kompose
       kubectl
       kubernetes
+      kubernetes-helm
     ];
 
     systemd.services.prepare-vpn-client = {
@@ -66,46 +67,35 @@ in
 
     networking.extraHosts = "${master-ip} api.kube"; 
 
-    # services.kubernetes = {
-    #
-    #   masterAddress = "booulder.xyz";
-    #   apiserverAddress = "https://booulder.xyz:${toString vars.master-port}";
-    #   easyCerts = true;
-    #
-    #   roles = if cfg.role == "master" then [
-    #     "master"
-    #     "node"
-    #   ] else [ "node" ];
-    #
-    #   apiserver = if (cfg.role == "master")
-    #   then {
-    #     enable = true;
-    #     securePort = vars.master-port;
-    #     advertiseAddress = master-ip;
-    #     bindAddress = "0.0.0.0";
-    #   }
-    #   else {};
-    #
-    #   # proxy = {
-    #   #   enable = true;
-    #   # };
-    #
-    #   flannel = if (cfg.role == "master")
-    #     then {
-    #       enable = true;
-    #       openFirewallPorts = true;
-    #     } else {};
-    #
-    #
-    #   addons.dns.enable = true;
-    #
-    #   kubelet = {
-    #     kubeconfig.server = "https://${if cfg.role == "master" then "127.0.0.1" else "booulder.xyz"}:${toString vars.master-port}";
-    #     extraConfig = {
-    #       failSwapOn = false;
-    #     };
-    #   };
-    # };
+    services.kubernetes = {
+
+      masterAddress = "api.kube";
+      apiserverAddress = "https://api.kube:${toString vars.master-port}";
+      easyCerts = true;
+
+      roles = if cfg.role == "master" then [
+        "master"
+        "node"
+      ] else [ "node" ];
+
+      apiserver = if (cfg.role == "master")
+      then {
+        enable = true;
+        securePort = vars.master-port;
+        advertiseAddress = master-ip;
+        bindAddress = "0.0.0.0";
+      }
+      else {};
+
+      addons.dns.enable = true;
+
+      kubelet = {
+        kubeconfig.server = "https://api.kube:${toString vars.master-port}";
+        extraConfig = {
+          failSwapOn = false;
+        };
+      };
+    };
     
   };
 }
