@@ -7,7 +7,6 @@
 
   outputs = { nixpkgs, nixpkgs-lts, sops-nix, ... }@inputs:
     let
-      vars = import ./vars.nix;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -26,7 +25,6 @@
 
           specialArgs = {
             inherit inputs;
-            inherit vars;
             soup-module = sops-nix.nixosModules.sops;
           };
         };

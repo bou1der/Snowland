@@ -22,9 +22,4 @@
     options = "--delete-older-than 30d";
   };
 
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    useRoutingFeatures = "client";
-  };
 }

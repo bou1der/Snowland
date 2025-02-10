@@ -5,12 +5,12 @@
     ./hardware-configuration.nix
     ./bin
     ../soups.nix
-    ../cluster.nix
+    ../cluster
   ];
 
   config.cluster = {
-    enable = false;
+    enable = true;
     role = "node";
+    name = "nix-nether";
   };
-
 }

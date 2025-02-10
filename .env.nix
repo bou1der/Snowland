@@ -22,6 +22,7 @@ in
     "monero/login" = base;
     "monero/password" = base;
     "monero/address" = base;
+
     "home-coolify/public" = base;
     "home-coolify/private" = base;
 
@@ -54,5 +55,9 @@ in
 
     "k8s/master-ip" = base;
     "k8s/server-token" = base;
+
+    "vpn/domain" = base;
+    "vpn/apikey" = base;
+
   };
 }
