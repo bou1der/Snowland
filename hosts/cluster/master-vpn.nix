@@ -34,11 +34,11 @@ in
     };
   } else {};
 
-  services.caddy = if cfg.role == "master" then {
-    enable = true;
-
-    virtualHosts."tail.booulder.xyz".extraConfig = ''
-      reverse_proxy * 127.0.0.1:9090
-    '';
-  } else {};
+  # services.caddy = if cfg.role == "master" then {
+  #   enable = true;
+  #
+  #   virtualHosts."tail.booulder.xyz".extraConfig = ''
+  #     reverse_proxy * 127.0.0.1:9090
+  #   '';
+  # } else {};
 }

@@ -11,6 +11,7 @@
     openssl
     openssh
     btop
+    vim
     jdk
     git
     tmux

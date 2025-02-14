@@ -31,18 +31,24 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    networking.firewall.allowedTCPPorts = [
+      80 443
+    ];
+
     environment.systemPackages = with pkgs; [
       nodejs_22
       kompose
       kubectl
       kubernetes
+      helmfile
       kubernetes-helm
+      cloudflared
     ];
 
     systemd.services.prepare-vpn-client = {
       script = ''
         #!${pkgs.bash}/bin/bash
-        API_URL="${if cfg.role == "master" then "http://127.0.0.1:9090" else "https://${env "vpn/domain"}"}"
+        API_URL="${if cfg.role == "master" then "http://127.0.0.1:9090" else "https://tail.${env "vpn/domain"}"}"
         API_KEY="${env "vpn/apikey"}"
         USERNAME="${if cfg.role == "master" then "master" else cfg.name}"
 
@@ -67,35 +73,28 @@ in
 
     networking.extraHosts = "${master-ip} api.kube"; 
 
-    services.kubernetes = {
+    virtualisation.containerd.enable = true;
 
-      masterAddress = "api.kube";
-      apiserverAddress = "https://api.kube:${toString vars.master-port}";
-      easyCerts = true;
+   # services.cloudflared = {
+   #    enable = true;
+   #
+   #    tunnels."<tunnel-id>" = {
+   #      credentialsFile = "${config.sops.secrets."cloudflare/credential".path}";
+   #      default = "http_status:404";
+   #    };
+   #  };
 
-      roles = if cfg.role == "master" then [
-        "master"
-        "node"
-      ] else [ "node" ];
-
-      apiserver = if (cfg.role == "master")
-      then {
-        enable = true;
-        securePort = vars.master-port;
-        advertiseAddress = master-ip;
-        bindAddress = "0.0.0.0";
-      }
-      else {};
-
-      addons.dns.enable = true;
-
-      kubelet = {
-        kubeconfig.server = "https://api.kube:${toString vars.master-port}";
-        extraConfig = {
-          failSwapOn = false;
-        };
-      };
+    services.k3s = {
+      enable = true;
+      token = env "k8s/server-token";
+      serverAddr = "https://api.kube:6443";
+      role = if cfg.role == "master" then "server" else "agent";
+      extraFlags = if cfg.role == "master" then [
+        "--write-kubeconfig-mode \"0644\""
+        "--tls-san=api.kube"
+        "--cluster-init"
+      ] else [];
+      clusterInit = if cfg.role == "master" then true else false;
     };
-    
   };
 }

@@ -14,11 +14,12 @@
     nest-cli
     colmena
 
+    kubernetes-helm
     kubernetes
     kubectl
     minikube
-    tailscale
 
+    tailscale
     openssl
     evtest
     ventoy

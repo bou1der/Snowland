@@ -46,18 +46,10 @@ in
     "wireguard/yzifbro-mobile" = base;
     "wireguard/yzifbro-tablet" = base;
 
-    "gitlab/email" = base;
-    "gitlab/password" = base;
-    "gitlab/secret" = base;
-    "gitlab/secret-db" = base;
-    "gitlab/secret-jws" = base;
-    "gitlab/secret-otp" = base;
-
     "k8s/master-ip" = base;
     "k8s/server-token" = base;
 
     "vpn/domain" = base;
     "vpn/apikey" = base;
-
   };
 }

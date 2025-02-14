@@ -1,11 +1,16 @@
-{ ... }:
+{ config, ... }:
 
+let
+  env = path: builtins.readFile config.sops.secrets."${path}".path;
+in 
 {
   imports = [
     ./proxy.nix
   ];
 
   networking.firewall.enable = true;
+
+  networking.extraHosts = "${env "k8s/master-ip"} api.kube"; 
 
   networking.networkmanager = {
     enable = true;

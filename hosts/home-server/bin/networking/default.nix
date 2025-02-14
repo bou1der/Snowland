@@ -8,7 +8,7 @@
     nat.externalInterface = "eth0";
     nat.internalInterfaces = [ "wg0" ];
 
-    firewall.enable = false;
+    firewall.enable = true;
     firewall.allowedTCPPorts = [
 
       22001 30033 25565 8000
