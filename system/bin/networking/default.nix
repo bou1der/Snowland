@@ -9,8 +9,17 @@ in
   ];
 
   networking.firewall.enable = true;
+  networking.firewall.allowedUDPPorts = [
+    8081
+  ];
 
-  networking.extraHosts = "${env "k8s/master-ip"} api.kube"; 
+  networking.firewall.allowedTCPPorts = [
+    8081
+    8000
+    3000
+    3001
+  ];
+  # networking.extraHosts = "${env "k8s/master-ip"} api.kube"; 
 
   networking.networkmanager = {
     enable = true;

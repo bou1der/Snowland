@@ -21,10 +21,10 @@ in
         # magic_dns = true;
         # domains = ["tail.booulder.xyz"];
 
-        nameservers.global = [
-          "1.1.1.1"
-          "9.9.9.9"
-        ];
+        # nameservers.global = [
+        #   "1.1.1.1"
+        #   "9.9.9.9"
+        # ];
       };
       ip_prefixes = [
         "10.1.0.0/10"

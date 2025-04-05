@@ -1,0 +1,96 @@
+releases:
+  - name: gitlab
+    namespace: git
+    chart: gitlab/gitlab
+    version: 8.5.1
+    values:
+      - global:
+          edition: ce
+          hosts:
+            domain: booulder.xyz
+          ingress:
+            configureCertmanager: true
+            class: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+              cert-manager.io/issuer: "letsencrypt-cluster-issuer"
+            tls:
+              enable: true
+      - nginx-ingress:
+          enabled: false
+      - certmanager:
+          install: false
+      - certmanager-issuer:
+          install: false
+          email: krowkin@bk.ru
+      - webservice:
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+      - postgresql:
+          persistence:
+            enabled: true
+            storageClassName: "local-path"
+            size: 5Gi
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+      - redis:
+          persistence:
+            enabled: true
+            storageClassName: "local-path"
+            size: 1Gi
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"
+      - registry:
+          persistence:
+            enabled: true
+            storageClassName: "local-path"
+            size: 12Gi
+      - gitlab-runner:
+          install: true
+          gitlabUrl: "http://gitlab-webservice-default.git.svc.cluster.local:8181"
+          runners:
+            config: |
+              [[runners]]
+                url = "http://gitlab-webservice-default.git.svc.cluster.local"
+                clone_url = "http://gitlab-webservice-default.git.svc.cluster.local:8181"
+                [runners.kubernetes]
+                  url = "http://gitlab-webservice-default.git.svc.cluster.local:8181"
+                  image = "alpine/git:latest"
+
+          rbac:
+            create: true
+            rules:
+              - resources: ["pods", "secrets", "configmaps", "namespaces", "events", "services", "serviceaccounts"]
+                verbs: ["get", "list", "watch", "create", "patch", "delete", "update"]
+              - apiGroups: [""]
+                resources: ["pods/exec", "pods/attach"]
+                verbs: ["create", "patch", "delete", "get"]
+              - resources: ["pods/log"]
+                verbs: ["get", "list"]
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 400m
+            requests:
+              memory: 256Mi
+              cpu: 200m
+
+# [[runners.kubernetes.host_aliases]]
+#   ip = "46.150.174.46"
+#   hostnames = ["gitlab.booulder.xyz"]

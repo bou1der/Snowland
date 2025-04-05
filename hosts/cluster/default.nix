@@ -23,6 +23,15 @@ in
         server name vpn
       '';
     };
+    ip = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = "10.0.0.0/32";
+      description = ''
+        ip route to server inside vpn
+        IMPORTANT!: set ip if role == "node"
+        custom ip dont work with master role
+      '';
+    };
   };
 
   imports = [
@@ -58,10 +67,10 @@ in
         chmod +x /var/lib/gen-token.js
 
         AUTHKEY=$(${pkgs.nodejs_22}/bin/node /var/lib/gen-token.js "$API_KEY" "$API_URL" "$USERNAME")
-        ${pkgs.tailscale}/bin/tailscale up --login-server $API_URL --authkey $AUTHKEY
+        ${pkgs.tailscale}/bin/tailscale up --login-server $API_URL --authkey $AUTHKEY --advertise-routes=${if cfg.role == "master" then env "k8s/master-ip" else cfg.ip} --accept-routes
       '';
       after = if cfg.role == "master" then [ "headscale.service" ] else [];
-      # wantedBy = [ "tailscaled.services" ];
+      wantedBy = if cfg.role == "master" then [] else [ "k3s.service" ];
     };
 
 
@@ -87,14 +96,63 @@ in
     services.k3s = {
       enable = true;
       token = env "k8s/server-token";
-      serverAddr = "https://api.kube:6443";
-      role = if cfg.role == "master" then "server" else "agent";
+      role =  if cfg.role == "master" then "server" else "agent";
       extraFlags = if cfg.role == "master" then [
         "--write-kubeconfig-mode \"0644\""
-        "--tls-san=api.kube"
+        "--tls-san=46.150.174.46"
         "--cluster-init"
-      ] else [];
+      ] else [
+        "--server=https://${env "k8s/master-ip"}:6443"
+        # "--token=${env "k8s/server-token"}"
+      ];
       clusterInit = if cfg.role == "master" then true else false;
+
+      manifests = if cfg.role == "master" then {
+        nether-role = {
+          enable = true;
+
+          content = [
+            {
+              apiVersion = "rbac.authorization.k8s.io/v1";
+              kind = "ClusterRole";
+              metadata = {
+                name = "system:node:nix-nether";
+              };
+              rules = [
+                {
+                  apiGroups = [""];
+                  # resources = ["nodes" "pods" "services" "namespaces" "endpoints"];
+                  # verbs = [ "get" "list" "watch"];
+                  resources = ["*"];
+                  verbs = ["*"];
+                }
+              ];
+            }
+            {
+              apiVersion = "rbac.authorization.k8s.io/v1";
+              kind = "ClusterRoleBinding";
+              metadata = {
+                name = "system:node:nix-nether";
+              };
+              roleRef = {
+                apiGroup = "rbac.authorization.k8s.io";
+                kind = "ClusterRole";
+                name = "system:node:nix-nether";
+              };
+              subjects = [
+                {
+                  kind = "User";
+                  name = "system:node:nix-nether";
+                  apiGroup = "rbac.authorization.k8s.io";
+                }
+              ];
+            }
+          ];
+        };
+
+      } else {};
+
     };
+
   };
 }

@@ -7,7 +7,7 @@ in
   programs.oh-my-posh = {
     enable = true;
     enableZshIntegration = true;
-    useTheme = "atomic";
+    useTheme = "velvet";
   };
 
   programs.zsh = {
@@ -18,8 +18,10 @@ in
 
     initExtra = ''
       eval "$(zoxide init zsh)"
-      export PATH="/home/boulder/.bun/bin:$PATH"
     '';
+
+      # export PATH="/home/boulder/.bun/bin:$PATH"
+
 
     shellAliases = {
       upfl = "sudo nix-channel --update && nix flake update";

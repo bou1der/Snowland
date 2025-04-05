@@ -9,8 +9,9 @@
   ];
 
   config.cluster = {
-    enable = true;
+    enable = false;
     role = "node";
     name = "nix-nether";
+    ip = "10.0.0.1/32";
   };
 }

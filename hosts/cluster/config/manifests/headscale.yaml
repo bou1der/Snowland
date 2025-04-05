@@ -10,8 +10,8 @@ metadata:
   namespace: headscale
 spec:
   ports:
-    - port: 9090
-      targetPort: 9090
+    - port: 9090  # Порт, который будет использоваться внутри кластера
+      targetPort: 9090  # Порт на хостовой системе
 ---
 apiVersion: v1
 kind: Endpoints
@@ -20,9 +20,9 @@ metadata:
   namespace: headscale
 subsets:
   - addresses:
-      - ip: 192.168.88.252
+      - ip: 192.168.88.252  # Укажите IP хостовой системы
     ports:
-      - port: 9090
+      - port: 9090  # Порт Headscale на хостовой системе
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -30,9 +30,8 @@ metadata:
   name: headscale-ingress
   namespace: headscale
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
+    cert-manager.io/cluster-issuer: "letsencrypt-cluster-issuer"
+    #traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 spec:
   rules:
     - host: tail.domain.xyz
@@ -44,8 +43,8 @@ spec:
               service:
                 name: headscale-external
                 port:
-                  number: 9090
+                  number: 9090  # Порт Service
   tls:
-    - hosts:
-        - tail.domain.xyz
-      secretName: headscale-tls
+      - hosts:
+          - tail.domain.xyz
+        secretName: headscale-tls

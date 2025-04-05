@@ -33,13 +33,15 @@
     enable = true;
     xwayland.enable = true;
 
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+
     settings = {
 
       monitor = [
-        "HDMI-A-1, 2560x1080@60, -1920x0, 1"
-        # "eDP-1,1920x1200@60, 0x0, 1"
+        # "HDMI-A-1, 2560x1080@60, -1920x0, 1"
+        "eDP-1,1920x1200@60, 0x0, 1"
         # "DP-2,1920x550@60, 0x1200, 1"
-        "eDP-1, disable"
+        # "eDP-1, disable"
         "DP-2, disable"
       ];
 

@@ -14,10 +14,12 @@
     nest-cli
     colmena
 
+    helmfile
     kubernetes-helm
     kubernetes
     kubectl
     minikube
+    pnpm
 
     tailscale
     openssl

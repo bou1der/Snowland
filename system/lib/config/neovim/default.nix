@@ -49,7 +49,7 @@ in
                   ${text ./config/plugins/cmake-tools.lua}
                   ${text ./config/plugins/runner.lua}
                   ${text ./config/plugins/markdown.lua}
-
+                  ${text ./config/plugins/pdf.lua}
                 },
                 {
                   ${text ./config/plugins/lsp/mason.lua}

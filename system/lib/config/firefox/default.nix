@@ -24,10 +24,12 @@
         vimium
         bitwarden
         ublock-origin
-        saka-key
       ];
       settings = {
         "permissions.default.shortcuts" = 1;
+        "datareporting.policy.dataSubmissionEnabled" = false;
+        "datareporting.healthreport.service.enabled" = false;
+        "datareporting.healthreport.uploadEnabled" = false;
       };
       search = {
         force = true;

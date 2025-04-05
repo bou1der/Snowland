@@ -1,6 +1,6 @@
 const args = process.argv.splice(2);
 if (args.length != 3) {
-	throw new Error("Ты еблан?");
+	throw new Error("Ошибка");
 }
 
 const API_KEY = args[0];

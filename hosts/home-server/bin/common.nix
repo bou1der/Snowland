@@ -23,26 +23,26 @@ in
     oci-containers.backend = "docker";
   };
 
-  systemd.services.prepare-docker = {
-    description = "Prepare docker settings";
-    script = ''
-      # coolify
-      ${pkgs.docker}/bin/docker  network inspect coolify >/dev/null 2>&1 || \
-      ${pkgs.docker}/bin/docker network create -attachable coolify
-
-      # host
-      # ${pkgs.docker}/bin/docker  network inspect local >/dev/null 2>&1 || \
-      # ${pkgs.docker}/bin/docker network create --driver host local
-    '';
-    after = [ "docker.service" "docker.socket" ];
-    wantedBy = [ "multi-user.target" ];
-  };
+  # systemd.services.prepare-docker = {
+  #   description = "Prepare docker settings";
+  #   script = ''
+  #     # coolify
+  #     ${pkgs.docker}/bin/docker  network inspect coolify >/dev/null 2>&1 || \
+  #     ${pkgs.docker}/bin/docker network create -attachable coolify
+  #
+  #     # host
+  #     # ${pkgs.docker}/bin/docker  network inspect local >/dev/null 2>&1 || \
+  #     # ${pkgs.docker}/bin/docker network create --driver host local
+  #   '';
+  #   after = [ "docker.service" "docker.socket" ];
+  #   wantedBy = [ "multi-user.target" ];
+  # };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.warn-dirty = false;
 
 
-  deployment.targetHost = env "ips/home-remote";
+  deployment.targetHost = env "ips/home-local";
   deployment.targetUser = "root";
   deployment.targetPort = 22001;
   deployment.buildOnTarget = true;
