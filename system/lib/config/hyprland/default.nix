@@ -158,9 +158,9 @@
         preserve_split = true;
       };
 
-      windowrule = [
-        "opacity[0.5] ^(dunst)$"
-      ];
+      # windowrule = [
+      #   "opacity[0.5] ^(dunst)$"
+      # ];
 
     };
   };

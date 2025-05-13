@@ -3,7 +3,7 @@
 {
 
   programs.proxychains = {
-    enable = true;
+    enable = false;
     proxyDNS = true;
     chain.type = "dynamic";
 
@@ -24,13 +24,13 @@
   };
 
   services.tor = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     client.enable = true;
   };
 
   services.tailscale = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     useRoutingFeatures = "client";
     extraUpFlags = [ "--ssh" ];

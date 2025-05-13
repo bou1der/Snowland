@@ -18,7 +18,7 @@
     };
     profiles.${vars.username} = {
 
-      extensions = with inputs.fox-addons.packages.${vars.system}; [
+      extensions.packages = with inputs.fox-addons.packages.${vars.system}; [
         userchrome-toggle
         sidebery
         vimium
@@ -33,8 +33,8 @@
       };
       search = {
         force = true;
-        default = "Google";
-        order = [ "Google" "DuckDuckGo" ];
+        default = "google";
+        order = [ "google" "ddg" ];
       };
     };
     languagePacks = [ "en-US" ];

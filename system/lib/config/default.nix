@@ -8,8 +8,9 @@
     ./firefox
     ./waybar
     ./neovim
-    ./eww
     ./other.nix
+    ./tmux
+    ./zathura
   ];
 }
 

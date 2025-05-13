@@ -20,6 +20,7 @@
     wget
     curl
     tor
+    go
     gcc
     ta-lib
     docker
@@ -27,7 +28,15 @@
     docker-compose
     bridge-utils
     libnotify
-    xwaylandvideobridge
+    poppler-utils
+    glibc
+    musl
+    ios-webkit-debug-proxy
+    ios-safari-remote-debug
+    libimobiledevice
+    usbmuxd
+    nix-ld
+    kdePackages.xwaylandvideobridge
   ];
 
   environment.variables = {

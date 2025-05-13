@@ -5,7 +5,6 @@
     wireguard-tools
     speedtest-cli
     clang-tools
-    monero-cli
     alacritty
     inetutils
     sysbench
@@ -13,13 +12,13 @@
     gobuster
     nest-cli
     colmena
+    pnpm
 
     helmfile
     kubernetes-helm
     kubernetes
     kubectl
     minikube
-    pnpm
 
     tailscale
     openssl
@@ -31,7 +30,6 @@
     nmap
     tree
     deno
-    tmux
     sops
     age
   ];

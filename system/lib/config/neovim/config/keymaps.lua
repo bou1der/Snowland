@@ -20,3 +20,18 @@ vim.api.nvim_set_keymap("n", "<leader>H", ":CMakeQuickRun<CR>", { noremap = true
 vim.api.nvim_set_keymap("n", "<leader>n", ":CMakeQuickBuild<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>M", ":RunCode<CR>", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "<leader>}", ":RunCode<CR>", { noremap = true, silent = true })
+
+-- PDF
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>}",
+	"<cmd>:lua require('pdfview.renderer').next_page()<CR>",
+	{ desc = "PDFview: Next page" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>{",
+	"<cmd>:lua require('pdfview.renderer').previous_page()<CR>",
+	{ desc = "PDFview: Previous page" }
+)

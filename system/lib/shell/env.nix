@@ -12,13 +12,15 @@
     typescript
     gnumake42
     nodePackages_latest.nodejs
-    # nodejs_22
     xdg-utils
     libinput
     ripgrep
     redis
     cmake
     unzip
+    lshw
+    iw
+    usbutils
     btop
     zip
     bun
@@ -27,7 +29,6 @@
   # programs.bun = {
   #   enable = true;
   # };
-  #
 
   home = {
     sessionVariables = {

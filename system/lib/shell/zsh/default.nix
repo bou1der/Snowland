@@ -2,13 +2,17 @@
 
 let
   env = path: builtins.readFile config.sops.secrets."${path}".path;
-in 
+in
 {
   programs.oh-my-posh = {
     enable = true;
     enableZshIntegration = true;
     useTheme = "velvet";
   };
+
+  home.packages = with pkgs ; [
+    zoxide
+  ];
 
   programs.zsh = {
     enable = true;
@@ -20,7 +24,7 @@ in
       eval "$(zoxide init zsh)"
     '';
 
-      # export PATH="/home/boulder/.bun/bin:$PATH"
+    # export PATH="/home/boulder/.bun/bin:$PATH"
 
 
     shellAliases = {
@@ -28,8 +32,8 @@ in
       nsw = "sudo nixos-rebuild switch --flake .#${vars.username} --impure";
       hsw = "nix build .#hmConfig.${vars.username}.activationPackage --impure && ./result/activate";
       rsw = "colmena apply --impure";
-      dev = "sudo tailscale up --login-server https://tail.${env "vpn/domain"} --authkey $(node ${../../../../hosts/cluster/config/gen-token.js} ${env "vpn/apikey"} https://tail.${env "vpn/domain"} ${vars.username})";
-      down = "sudo tailscale down";
+      # dev = "sudo tailscale up --login-server https://tail.${env "vpn/domain"} --authkey $(node ${../../../../hosts/cluster/config/gen-token.js} ${env "vpn/apikey"} https://tail.${env "vpn/domain"} ${vars.username})";
+      # down = "sudo tailscale down";
       doclean = "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker volume rm $(docker volume ls -q)";
       dost = "docker stop $(docker ps -aq)";
       cd = "z";
@@ -39,6 +43,7 @@ in
       gs = "git status";
       gr = "git restore";
       n = "nvim";
+      k = "kubectl";
     };
 
     history = {

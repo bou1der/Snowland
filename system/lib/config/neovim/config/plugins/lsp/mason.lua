@@ -13,14 +13,15 @@
 			automatic_installation = true,
 			ensure_installed = {
 				"biome",
-				"ts_ls",
 				"html",
 				"cssls",
 				"jsonls",
 				"tailwindcss",
         "pyright",
         "clangd",
-        "rnix"
+        "rnix",
+				"lua_ls",
+				"gopls"
 			},
 		})
 
@@ -31,9 +32,11 @@
 				"biome",
 				"black",
         "pyright",
+        "gopls",
 				"biome",
         "clangd",
-        "rnix"
+        "rnix",
+				"gopls"
 			},
 		})
 	end,

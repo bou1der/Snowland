@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs, ... }:
 
 {
   home.packages = with pkgs ; [
@@ -12,14 +12,13 @@
     ani-cli
     libreoffice-qt
     prismlauncher
-    teamspeak_client
     telegram-desktop
     beekeeper-studio
     google-chrome
     monero-gui
     sunshine
     moonlight-qt
-    winbox
+    winbox4
     vscode
     postman
     tor-browser
@@ -28,8 +27,12 @@
     yazi
     tradingview
     bitwarden-desktop
-    zoxide
-    fzf
+    krita
+    # steam
+    osu-lazer-bin
+  ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.1.5"
   ];
 
 

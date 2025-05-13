@@ -9,7 +9,7 @@
   services.logind.powerKey = "hibernate";
   services.logind.powerKeyLongPress = "hibernate";
   services.logind.lidSwitchExternalPower = "hybrid-sleep";
-  services.logind.lidSwitch = "hybrid-sleep";
+  services.logind.lidSwitch = "suspend";
 
 
   programs.nix-ld.enable = true;

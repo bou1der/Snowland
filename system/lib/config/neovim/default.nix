@@ -27,6 +27,9 @@ in
     extraLuaConfig = ''
       ${text ./config/keymaps.lua}
       ${text ./config/options.lua}
+      ${text ./config/autocmd.lua}
+      ${text ./config/importconverter.lua}
+      ${text ./config/yank_highlight.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
