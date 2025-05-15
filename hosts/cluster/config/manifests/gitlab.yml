@@ -7,7 +7,7 @@ releases:
       - global:
           edition: ce
           hosts:
-            domain: booulder.xyz
+            domain: DOMAIN.xyz
           ingress:
             configureCertmanager: true
             class: traefik
@@ -23,7 +23,7 @@ releases:
           install: false
       - certmanager-issuer:
           install: false
-          email: krowkin@bk.ru
+          email: admin@bk.ru
       - webservice:
           resources:
             requests:
@@ -90,7 +90,3 @@ releases:
             requests:
               memory: 256Mi
               cpu: 200m
-
-# [[runners.kubernetes.host_aliases]]
-#   ip = "46.150.174.46"
-#   hostnames = ["gitlab.booulder.xyz"]

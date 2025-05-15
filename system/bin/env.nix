@@ -13,6 +13,10 @@
     liberation_ttf
     siji
     nerd-fonts.hack
+    # nerdfonts
+    nerd-fonts.iosevka
+    nerd-fonts.noto
+    nerd-fonts.iosevka-term
   ];
 
   environment.systemPackages = with pkgs; [

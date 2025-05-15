@@ -6,6 +6,6 @@
     home = "/home/${vars.username}";
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "audio" "tor" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "audio" ];
   };
 }

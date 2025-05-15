@@ -5,7 +5,7 @@ let
 in
 {
   programs.cava = {
-    enable = false;
+    enable = true;
 
     settings = {
       general.mode = "waves";

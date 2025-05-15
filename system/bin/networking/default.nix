@@ -25,7 +25,6 @@ in
     "resolv.conf".text = ''
       nameserver 208.67.222.222
       nameserver 208.67.220.220
-      nameserver 192.168.88.1
     '';
   };
 
@@ -39,7 +38,7 @@ in
     iwd.settings = {
       Network = {
         EnableIPv6 = true;
-        NameResolvingService = "systemd-resolved"; # Использует systemd-resolved
+        NameResolvingService = "systemd-resolved";
       };
     };
 
