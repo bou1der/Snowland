@@ -1,4 +1,12 @@
+{ pkgs, nixvim, ... }:
 {
+  home.packages = with pkgs; [
+     (nixvim.legacyPackages."${pkgs.stdenv.hostPlatform.system}".makeNixvimWithModule {
+      inherit pkgs;
+      module = import ./nvim;
+    })
+  ];
+
   imports = [
     ./kitty
     ./cava
@@ -7,7 +15,6 @@
     ./hyprland
     ./firefox
     ./waybar
-    ./neovim
     ./other.nix
     ./tmux
     ./zathura

@@ -1,23 +1,24 @@
 {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
+	build = ":TSUpdate",
 	config = function()
 		local configs = require("nvim-treesitter.configs")
 
 		configs.setup({
 			modules = {},
 			ensure_installed = {
+				"go",
 				"lua",
 				"python",
+				"rust",
 				"typescript",
 				"typescript",
-        "nix",
 				"tsx",
 				"css",
 				"html",
 				"vim",
 				"dockerfile",
-        "cpp",
 				"gitignore",
 				"vimdoc",
 				"markdown",

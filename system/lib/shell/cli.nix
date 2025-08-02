@@ -20,6 +20,8 @@
     kubectl
     minikube
 
+    android-studio
+
     tailscale
     openssl
     evtest

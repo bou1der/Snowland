@@ -2,18 +2,14 @@
   description = "My nixos system dotfile 🐢";
 
   inputs = {
-
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     sops-nix.url = "github:Mic92/sops-nix";
-
     fox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,9 +20,21 @@
       submodules = true;
       flake = false;
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      sops-nix,
+      nixvim,
+      ...
+    }@inputs:
     let
       vars = import ./utils.nix;
       lib = nixpkgs.lib;
@@ -56,11 +64,11 @@
         "${vars.username}" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${vars.system};
           extraSpecialArgs = {
-            inherit inputs;
-            inherit vars;
+            inherit inputs vars nixvim;
             soup-module = sops-nix.homeManagerModules.sops;
           };
           modules = [
+            # nixvim.homeManagerModules.nixvim
             {
               nixpkgs.config.allowUnfree = true;
               home = {

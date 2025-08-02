@@ -12,6 +12,7 @@
     typescript
     gnumake42
     nodePackages_latest.nodejs
+    ios-webkit-debug-proxy
     xdg-utils
     libinput
     ripgrep
@@ -25,10 +26,6 @@
     zip
     bun
   ];
-
-  # programs.bun = {
-  #   enable = true;
-  # };
 
   home = {
     sessionVariables = {

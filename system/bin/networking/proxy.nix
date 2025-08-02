@@ -30,7 +30,7 @@
   };
 
   services.tailscale = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     useRoutingFeatures = "client";
     extraUpFlags = [ "--ssh" ];

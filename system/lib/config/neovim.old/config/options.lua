@@ -1,6 +1,6 @@
 vim.opt.mouse = "a"
 
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -32,4 +32,4 @@ vim.opt.laststatus = 0
 vim.opt.ruler = false
 vim.opt.showcmd = false
 
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")

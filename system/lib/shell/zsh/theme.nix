@@ -42,10 +42,6 @@ in
                 "fetch_status" = true;
                 "fetch_upstream_icon" = true;
                 "source" = "cli";
-                # "mapped_branches" = {
-                #   "feat/*" = "🚀 ";
-                #   "bug/*" = "🐛 ";
-                # };
               };
             }
           ];
@@ -62,9 +58,7 @@ in
               "foreground" = color.special.background;
               "background" = color.special.foreground;
               "background_templates" = [
-                # "{{if eq \"Charging\" .State.String}}${color.special.}{{end}}"
                 "{{if eq \"Discharging\" .State.String}}#ab0000{{end}}"
-                # "{{if eq \"Full\" .State.String}}#4caf50{{end}}"
               ];
               "template" = " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }} ";
               "properties" = {

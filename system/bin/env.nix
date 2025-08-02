@@ -3,6 +3,7 @@
 {
   services.libinput.enable = true;
   services.acpid.enable = true;
+  services.usbmuxd.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -26,11 +27,11 @@
     tor
     go
     gcc
-    ta-lib
     docker
     poppler-utils
     docker-compose
     bridge-utils
+
     libnotify
     poppler-utils
     glibc
@@ -41,11 +42,21 @@
     usbmuxd
     nix-ld
     kdePackages.xwaylandvideobridge
+
+    android-tools
+
   ];
 
-  environment.variables = {
-    SOPS_AGE_KEY_FILE = "$HOME/Snowland/.keys";
-    # LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+  environment = {
+
+    sessionVariables = {
+      LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    };
+    variables = {
+      SOPS_AGE_KEY_FILE = "$HOME/Snowland/.keys";
+
+      # LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    };
   };
 
 }

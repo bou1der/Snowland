@@ -28,11 +28,10 @@
     tradingview
     bitwarden-desktop
     krita
-    # steam
     osu-lazer-bin
   ];
   nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.1.5"
+    "beekeeper-studio-5.2.12"
     "ventoy-1.1.05"
   ];
 

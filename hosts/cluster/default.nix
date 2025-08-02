@@ -99,7 +99,7 @@ in
       role =  if cfg.role == "master" then "server" else "agent";
       extraFlags = if cfg.role == "master" then [
         "--write-kubeconfig-mode \"0644\""
-        "--tls-san=46.150.174.46"
+        "--tls-san=ip.addres"
         "--cluster-init"
       ] else [
         "--server=https://${env "k8s/master-ip"}:6443"

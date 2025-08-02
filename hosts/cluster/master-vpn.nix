@@ -16,7 +16,7 @@ in
         policy.path = ./config/acls.json;
         server_url = "https://vpn.example.com:9090";
         dns = {
-          base_domain = "booulder.xyz";
+          base_domain = "DOMAIN.xyz";
 
           # magic_dns = true;
           # domains = ["tail.booulder.xyz"];
