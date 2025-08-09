@@ -7,11 +7,11 @@
     }
     {
       key = "<leader>bs";
-      action = "<CMD>splite<CR>";
+      action = ":split<CR>";
     }
     {
       key = "<leader>bv";
-      action = "<CMD>vsplite<CR>";
+      action = ":vsplit<CR>";
     }
     {
       key = "<leader>el";

@@ -1,9 +1,8 @@
-
 {
   plugins.ts-autotag = {
     enable = true;
     lazyLoad = {
-      enable = true;
+      enable = false;
       settings.cmd = "Neotest";
     };
   };

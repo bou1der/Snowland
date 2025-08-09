@@ -14,7 +14,7 @@
       enable = true;
       inlayHints = true;
       servers = {
-        biome.enable = true;
+        biome.enable = false;
         html.enable = true;
         lua_ls.enable = true;
         nil_ls.enable = true;

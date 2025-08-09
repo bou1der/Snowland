@@ -12,10 +12,10 @@ in
       mainBar = {
         layer = "top";
         position = "top";
-        width = 1920;
-        output = "eDP-1";
-        # width = 2560;
-        # output = "HDMI-A-1";
+        # width = 1920;
+        # output = "eDP-1";
+        width = 2560;
+        output = "HDMI-A-1";
         margin-top = 6;
         spacing = 8;
 

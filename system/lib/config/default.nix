@@ -1,10 +1,11 @@
 { pkgs, nixvim, ... }:
 {
   home.packages = with pkgs; [
-     (nixvim.legacyPackages."${pkgs.stdenv.hostPlatform.system}".makeNixvimWithModule {
+    (nixvim.legacyPackages."${pkgs.stdenv.hostPlatform.system}".makeNixvimWithModule {
       inherit pkgs;
       module = import ./nvim;
     })
+    tailwindcss-language-server
   ];
 
   imports = [
@@ -20,4 +21,3 @@
     ./zathura
   ];
 }
-

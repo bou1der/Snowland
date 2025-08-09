@@ -1,4 +1,3 @@
-
 {
   imports = [
     ./mini
@@ -12,5 +11,7 @@
     ./cmp.nix
     ./conform.nix
     ./nonels.nix
+    ./cursor.nix
+    ./tailwind.nix
   ];
 }
