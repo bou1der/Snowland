@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs ; [
+  home.packages = with pkgs; [
     wireguard-tools
     speedtest-cli
     clang-tools
@@ -35,4 +35,5 @@
     sops
     age
   ];
+
 }

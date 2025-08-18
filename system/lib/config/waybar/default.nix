@@ -2,6 +2,10 @@
 
 let
   walls = pkgs.lib.importJSON "/home/boulder/.cache/wal/colors.json";
+  # bar-cava = builtins.fetchGit {
+  #   url = "https://github.com/ray-pH/waybar-cava";
+  #   rev = "2090eb1203217166b1a4feea072aed2f578613a6";
+  # };
 in
 {
   programs.waybar = {
@@ -12,17 +16,20 @@ in
       mainBar = {
         layer = "top";
         position = "top";
-        # width = 1920;
-        # output = "eDP-1";
-        width = 2560;
-        output = "HDMI-A-1";
+        width = 1920;
+        output = "eDP-1";
+        # width = 2560;
+        # output = "HDMI-A-1";
         margin-top = 6;
         spacing = 8;
 
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "tray" "custom/home-button" ];
-
+        modules-center = [ ];
+        modules-right = [
+          "tray"
+          "clock"
+          "custom/home-button"
+        ];
 
         "hyprland/workspaces" = {
           format = "";

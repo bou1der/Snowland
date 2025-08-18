@@ -1,12 +1,10 @@
 { ... }:
 
 {
-
   programs.proxychains = {
-    enable = false;
+    enable = true;
     proxyDNS = true;
     chain.type = "dynamic";
-
     proxies = {
       torProxy = {
         enable = true;
@@ -14,23 +12,17 @@
         host = "127.0.0.1";
         port = 9050;
       };
-      PL = {
-        enable = true;
-        type = "socks4";
-        host = "185.32.4.65";
-        port = 4153;
-      };
     };
   };
 
   services.tor = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     client.enable = true;
   };
 
   services.tailscale = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     useRoutingFeatures = "client";
     extraUpFlags = [ "--ssh" ];

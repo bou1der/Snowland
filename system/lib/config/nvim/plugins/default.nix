@@ -13,5 +13,6 @@
     ./nonels.nix
     ./cursor.nix
     ./tailwind.nix
+    ./avante.nix
   ];
 }

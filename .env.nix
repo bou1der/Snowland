@@ -23,6 +23,9 @@ in
     "monero/password" = base;
     "monero/address" = base;
 
+    "ai/anthropic" = base;
+    "ai/gemini" = base;
+
     # "home-coolify/public" = base;
     # "home-coolify/private" = base;
 

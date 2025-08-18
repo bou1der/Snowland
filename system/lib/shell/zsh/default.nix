@@ -1,4 +1,9 @@
-{ config, vars, pkgs, ... }:
+{
+  config,
+  vars,
+  pkgs,
+  ...
+}:
 
 let
   env = path: builtins.readFile config.sops.secrets."${path}".path;
@@ -10,7 +15,7 @@ in
     ./theme.nix
   ];
 
-  home.packages = with pkgs ; [
+  home.packages = with pkgs; [
     zoxide
   ];
 
@@ -21,17 +26,19 @@ in
     syntaxHighlighting.enable = true;
 
     initContent = ''
+      export EDITOR=nvim
+      export GEMINI_API_KEY=${env "ai/gemini"}
       eval "$(zoxide init zsh)"
     '';
 
     # export PATH=" /home/boulder/.bun/bin =$PATH"
-
 
     shellAliases = {
       upfl = "sudo nix-channel --update && nix flake update";
       nsw = "sudo nixos-rebuild switch --flake .#${vars.username} --impure";
       hsw = "nix build .#hmConfig.${vars.username}.activationPackage --impure && ./result/activate";
       rsw = "colmena apply --impure";
+      shell = "nix develop";
       # dev = "sudo tailscale up --login-server https =//tail.${env "vpn/domain"} --authkey $(node ${../../../../hosts/cluster/config/gen-token.js} ${env "vpn/apikey"} https://tail.${env "vpn/domain"} ${vars.username})";
       # down = "sudo tailscale down";
       doclean = "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker volume rm $(docker volume ls -q)";

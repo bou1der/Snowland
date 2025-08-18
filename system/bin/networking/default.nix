@@ -1,8 +1,5 @@
-{ config, ... }:
+{ ... }:
 
-let
-  env = path: builtins.readFile config.sops.secrets."${path}".path;
-in
 {
   imports = [
     ./proxy.nix
@@ -28,10 +25,12 @@ in
     '';
   };
 
-  networking.nameservers = [ "208.67.222.222" "208.67.220.220" ];
+  networking.nameservers = [
+    "208.67.222.222"
+    "208.67.220.220"
+  ];
 
   networking.wireless = {
-    # enable = true;
     iwd = {
       enable = true;
     };
@@ -44,12 +43,4 @@ in
 
   };
 
-  # networking.networkmanager = {
-  #   enable = true;
-  #   wifi = {
-  #     powersave = false;
-  #   };
-  #   dns = "systemd-resolved";
-  #   insertNameservers = [ "208.67.222.222" "208.67.220.220" ];
-  # };
 }

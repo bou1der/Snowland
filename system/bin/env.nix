@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
+let
+  env = path: builtins.readFile config.sops.secrets."${path}".path;
+in
 {
   services.libinput.enable = true;
   services.acpid.enable = true;
@@ -44,16 +47,19 @@
     kdePackages.xwaylandvideobridge
 
     android-tools
-
+    ffmpeg
   ];
 
   environment = {
 
-    sessionVariables = {
-      LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
-    };
+    # sessionVariables = {
+    # LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    # };
+
     variables = {
       SOPS_AGE_KEY_FILE = "$HOME/Snowland/.keys";
+      AVANTE_ANTHROPIC_API_KEY = env "ai/anthropic";
+      GEMINI_API_KEY = env "ai/gemini";
 
       # LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
     };

@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   walls = pkgs.lib.importJSON "/home/boulder/.cache/wal/colors.json";
@@ -28,8 +33,8 @@ in
         {
           size = "200, 50";
           position = "0, -80";
-          # monitor = "eDP-1";
-          monitor = "HDMI-A-1";
+          monitor = "eDP-1";
+          # monitor = "HDMI-A-1";
           dots_center = true;
           fade_on_empty = false;
           font_color = "rgb(202, 211, 245)";

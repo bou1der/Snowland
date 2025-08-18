@@ -27,8 +27,6 @@ in
         gradient_color_7 = "'${walls.colors.color7}'";
         gradient_color_8 = "'${walls.colors.color8}'";
 
-
-
       };
     };
   };
